@@ -1,0 +1,9 @@
+{
+  "ua_app_name": "User Application",
+  "login": "Login",
+  "logout": "Logout",
+  "show_device_preview": "Show Device Preview",
+  "overlap_sub_menu": "Overlap Sub Menu",
+  "change_locale": "Change Locale",
+  "current_locale": "Current Locale"
+}

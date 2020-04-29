@@ -1,0 +1,21 @@
+{
+  "organizationId": "testorganization",
+  "isActive": true,
+  "name": "Amiran Test Organization",
+  "country": "AE",
+  "typeOfPractice": "string",
+  "licenseType": "license3",
+  "licenseNumber": "123456",
+  "liceneseExpirationDate": "2020-01-17T00:50:28.973+00:00",
+  "adminNameGiven": "amiran",
+  "adminNameFamily": "melia",
+  "adminEmail": "melia.amirani@gmail.com",
+  "contactDetails": {
+    "country": "AE",
+    "city": "Dubai",
+    "address": "54g, Russle Street",
+    "office": "52, 3rd Street",
+    "officePhone": "+8761872634234",
+    "fax": "+8623864234234"
+  }
+}

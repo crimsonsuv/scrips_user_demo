@@ -1,0 +1,18 @@
+[
+  {
+    "organizationId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "doctorSetupId": "8f9c25b0-543c-ea11-9192-0cc47a65f3a3",
+    "firstName": "1",
+    "lastName": "string",
+    "emailId": "string",
+    "isSuperAdmin": false
+  },
+  {
+    "organizationId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "doctorSetupId": "b9df9c1f-f83c-ea11-9192-0cc47a65f3a3",
+    "firstName": "Suvankar",
+    "lastName": "Das",
+    "emailId": "suv.das19@gmail.com",
+    "isSuperAdmin": false
+  }
+]

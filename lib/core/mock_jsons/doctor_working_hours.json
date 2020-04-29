@@ -1,0 +1,96 @@
+{
+  "doctor_working_hours": [
+    {
+      "id": 201,
+      "profile_name": "General",
+      "type_id": 1,
+      "practice": "Primary Clinic Dubai",
+      "room": "Room 4",
+      "start_date": "2020-01-01",
+      "end_date": null,
+      "hours": [
+        {
+          "day_off": false,
+          "time_slot": [
+            {
+              "start_time": "9:00 AM",
+              "end_time": "7:00 PM"
+            }
+          ]
+        },
+        {
+          "day_off": false,
+          "time_slot": [
+            {
+              "start_time": "9:00 AM",
+              "end_time": "7:00 PM"
+            }
+          ]
+        },
+        {
+          "day_off": false,
+          "time_slot": [
+            {
+              "start_time": "9:00 AM",
+              "end_time": "7:00 PM"
+            }
+          ]
+        },
+        {
+          "day_off": false,
+          "time_slot": [
+            {
+              "start_time": "9:00 AM",
+              "end_time": "7:00 PM"
+            }
+          ]
+        },
+        {
+          "day_off": false,
+          "time_slot": [
+            {
+              "start_time": "9:00 AM",
+              "end_time": "7:00 PM"
+            }
+          ]
+        },
+        {
+          "day_off": false,
+          "time_slot": [
+            {
+              "start_time": "9:00 AM",
+              "end_time": "7:00 PM"
+            }
+          ]
+        },
+        {
+          "day_off": false,
+          "time_slot": [
+            {
+              "start_time": "9:00 AM",
+              "end_time": "7:00 PM"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 202,
+      "profile_name": "Closed For Christmas",
+      "practice": "Primary Clinic Dubai",
+      "type_id": 2,
+      "start_date": "2020-12-24",
+      "end_date": "2020-12-26",
+      "hours": null
+    },
+    {
+      "id": 203,
+      "profile_name": "Closed For Renovation",
+      "practice": "Primary Clinic Abu Dhabi",
+      "type_id": 2,
+      "start_date": "2020-02-24",
+      "end_date": "2020-02-26",
+      "hours": null
+    }
+  ]
+}

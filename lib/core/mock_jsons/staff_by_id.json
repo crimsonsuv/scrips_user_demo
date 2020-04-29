@@ -1,0 +1,10 @@
+{
+  "providerId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "staffSetupId": "56e437f2-553c-ea11-9192-0cc47a65f3a3",
+  "firstName": "string2",
+  "lastName": "string",
+  "assignDoctor": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "role": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "emailId": "string",
+  "mobileNumber": "string"
+}

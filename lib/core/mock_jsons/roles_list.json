@@ -1,0 +1,1157 @@
+{
+  "success": true,
+  "roles": [
+    {
+      "id": 1,
+      "title": "In-house Doctor",
+      "description": "In-house doctor has access to the entire system.",
+      "permissions": [
+        {
+          "access_name": "Practice Access",
+          "data": [
+            {
+              "title": "Appointment Provider Selection",
+              "description": "Allow the user to schedule appointments for all providers in the practice group",
+              "status": true
+            },
+            {
+              "title": "Access To Message Center",
+              "description": "Allow the user to access the message center",
+              "status": true
+            },
+            {
+              "title": "Create And Update Contacts",
+              "description": "Allow the user to create, update and remove contacts",
+              "status": true
+            },
+            {
+              "title": "Provider Dropdown",
+              "description": "Allow the user to dropdown of provider switch (Practice Groups Only)",
+              "status": true
+            },
+            {
+              "title": "View Practice Group",
+              "description": "Allow the user to view practice group information",
+              "status": true
+            },
+            {
+              "title": "Settings",
+              "description": "Allow the user to view and edit doctor's profile",
+              "status": true
+            },
+            {
+              "title": "Manage Permissions",
+              "description": "Allow the user to manage permission of their doctors and staff",
+              "status": true
+            },
+            {
+              "title": "Manage Accounts",
+              "description": "Allow the user to create new or edit existing staff member accounts",
+              "status": true
+            },
+            {
+              "title": "Add New Referring Sources",
+              "description": "Allow the user to add new referring sources on the patients demographics screen",
+              "status": true
+            },
+            {
+              "title": "Access All Messages For Practice Group",
+              "description": "Allow the user to view and interact with the messages for their whole practice group",
+              "status": true
+            },
+            {
+              "title": "Access Scheduling",
+              "description": "Allow the user to view, add, and edit patient appointments and other scheduling features",
+              "status": true
+            },
+            {
+              "title": "Emergency Access",
+              "description": "Allow the user to temporarily request emergency access to Create and Update Patients, Access Scheduling and Access Clinical Notes system permissions",
+              "status": true
+            }
+          ]
+        },
+        {
+          "access_name": "EMR Access",
+          "data": [
+            {
+              "title": "Access Clinical Notes",
+              "description": "Allow the user to view and interact with the clinical notes components ",
+              "status": true
+            },
+            {
+              "title": "Sign/Lock Clinical Notes",
+              "description": "Allow the user to sign in and lock clinical notes",
+              "status": true
+            },
+            {
+              "title": "Manage Templates",
+              "description": "Allow the user to create new or edit existing clinical templates ",
+              "status": true
+            },
+            {
+              "title": "Use IPad EHR",
+              "description": "Allow the user to access the iPad EHR system",
+              "status": true
+            }
+          ]
+        },
+        {
+          "access_name": "Patients Access",
+          "data": [
+            {
+              "title": "Create And Update Patients",
+              "description": "Allow the user to create and update patient information",
+              "status": true
+            },
+            {
+              "title": "Access Patient Analytics",
+              "description": "Allow the user to access and interact with patient analytics",
+              "status": true
+            },
+            {
+              "title": "Share Patients",
+              "description": "Allow the user to access all patients in a practice group",
+              "status": true
+            },
+            {
+              "title": "Access Reports",
+              "description": "Allow the user to access and interact with reports",
+              "status": true
+            },
+            {
+              "title": "Export Patients",
+              "description": "Allow the user to use user export tools",
+              "status": true
+            }
+          ]
+        },
+        {
+          "access_name": "Billing Access",
+          "data": [
+            {
+              "title": "Access Billing",
+              "description": "Allow the user to view and interact with the billing system ",
+              "status": true
+            },
+            {
+              "title": "Show Patient Balance",
+              "description": "Allow the user to view the patients balance in the appointment screen and patient screen",
+              "status": true
+            },
+            {
+              "title": "Show Billing Tab",
+              "description": "Allow the user to view and edit information in the billing tab in the appointment view",
+              "status": true
+            },
+            {
+              "title": "Show Billing Summary",
+              "description": "Allow the user to view and edit information in the billing summary screen",
+              "status": true
+            },
+            {
+              "title": "Access Institutional Billing",
+              "description": "Allow the user to view and interact with the institutional claims",
+              "status": true
+            },
+            {
+              "title": "Billing Administrator",
+              "description": "Allow the user to manage sensitive billing data",
+              "status": true
+            },
+            {
+              "title": "Access Balance/Ledger",
+              "description": "Allow the user to view balance/ledger screen in the billing center",
+              "status": true
+            },
+            {
+              "title": "Access Patient Payments",
+              "description": "Allow the user to view patient payments screen in the billing center",
+              "status": true
+            },
+            {
+              "title": "Access Patient Statements",
+              "description": "Allow the user to view patient statements screen in the billing center",
+              "status": true
+            }
+          ]
+        },
+        {
+          "access_name": "eRx Access",
+          "data": [
+            {
+              "title": "Drug Interactions Check",
+              "description": "Allow the user to perform drug interaction checks",
+              "status": true
+            },
+            {
+              "title": "Show Patient Balance",
+              "description": "Allow the user to access eRx screens",
+              "status": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Visiting Doctor",
+      "description": "Visiting doctors has access only to their clinical records and patients.",
+      "permissions": [
+        {
+          "access_name": "Practice Access",
+          "data": [
+            {
+              "title": "Appointment Provider Selection",
+              "description": "Allow the user to schedule appointments for all providers in the practice group",
+              "status": true
+            },
+            {
+              "title": "Access To Message Center",
+              "description": "Allow the user to access the message center",
+              "status": true
+            },
+            {
+              "title": "Create And Update Contacts",
+              "description": "Allow the user to create, update and remove contacts",
+              "status": true
+            },
+            {
+              "title": "Provider Dropdown",
+              "description": "Allow the user to dropdown of provider switch (Practice Groups Only)",
+              "status": true
+            },
+            {
+              "title": "View Practice Group",
+              "description": "Allow the user to view practice group information",
+              "status": true
+            },
+            {
+              "title": "Settings",
+              "description": "Allow the user to view and edit doctor's profile",
+              "status": true
+            },
+            {
+              "title": "Manage Permissions",
+              "description": "Allow the user to manage permission of their doctors and staff",
+              "status": true
+            },
+            {
+              "title": "Manage Accounts",
+              "description": "Allow the user to create new or edit existing staff member accounts",
+              "status": true
+            },
+            {
+              "title": "Add New Referring Sources",
+              "description": "Allow the user to add new referring sources on the patients demographics screen",
+              "status": true
+            },
+            {
+              "title": "Access All Messages For Practice Group",
+              "description": "Allow the user to view and interact with the messages for their whole practice group",
+              "status": true
+            },
+            {
+              "title": "Access Scheduling",
+              "description": "Allow the user to view, add, and edit patient appointments and other scheduling features",
+              "status": true
+            },
+            {
+              "title": "Emergency Access",
+              "description": "Allow the user to temporarily request emergency access to Create and Update Patients, Access Scheduling and Access Clinical Notes system permissions",
+              "status": true
+            }
+          ]
+        },
+        {
+          "access_name": "EMR Access",
+          "data": [
+            {
+              "title": "Access Clinical Notes",
+              "description": "Allow the user to view and interact with the clinical notes components ",
+              "status": true
+            },
+            {
+              "title": "Sign/Lock Clinical Notes",
+              "description": "Allow the user to sign in and lock clinical notes",
+              "status": true
+            },
+            {
+              "title": "Manage Templates",
+              "description": "Allow the user to create new or edit existing clinical templates ",
+              "status": true
+            },
+            {
+              "title": "Use IPad EHR",
+              "description": "Allow the user to access the iPad EHR system",
+              "status": true
+            }
+          ]
+        },
+        {
+          "access_name": "Patients Access",
+          "data": [
+            {
+              "title": "Create And Update Patients",
+              "description": "Allow the user to create and update patient information",
+              "status": true
+            },
+            {
+              "title": "Access Patient Analytics",
+              "description": "Allow the user to access and interact with patient analytics",
+              "status": true
+            },
+            {
+              "title": "Share Patients",
+              "description": "Allow the user to access all patients in a practice group",
+              "status": true
+            },
+            {
+              "title": "Access Reports",
+              "description": "Allow the user to access and interact with reports",
+              "status": true
+            },
+            {
+              "title": "Export Patients",
+              "description": "Allow the user to use user export tools",
+              "status": true
+            }
+          ]
+        },
+        {
+          "access_name": "Billing Access",
+          "data": [
+            {
+              "title": "Access Billing",
+              "description": "Allow the user to view and interact with the billing system ",
+              "status": true
+            },
+            {
+              "title": "Show Patient Balance",
+              "description": "Allow the user to view the patients balance in the appointment screen and patient screen",
+              "status": true
+            },
+            {
+              "title": "Show Billing Tab",
+              "description": "Allow the user to view and edit information in the billing tab in the appointment view",
+              "status": true
+            },
+            {
+              "title": "Show Billing Summary",
+              "description": "Allow the user to view and edit information in the billing summary screen",
+              "status": true
+            },
+            {
+              "title": "Access Institutional Billing",
+              "description": "Allow the user to view and interact with the institutional claims",
+              "status": true
+            },
+            {
+              "title": "Billing Administrator",
+              "description": "Allow the user to manage sensitive billing data",
+              "status": true
+            },
+            {
+              "title": "Access Balance/Ledger",
+              "description": "Allow the user to view balance/ledger screen in the billing center",
+              "status": true
+            },
+            {
+              "title": "Access Patient Payments",
+              "description": "Allow the user to view patient payments screen in the billing center",
+              "status": true
+            },
+            {
+              "title": "Access Patient Statements",
+              "description": "Allow the user to view patient statements screen in the billing center",
+              "status": true
+            }
+          ]
+        },
+        {
+          "access_name": "eRx Access",
+          "data": [
+            {
+              "title": "Drug Interactions Check",
+              "description": "Allow the user to perform drug interaction checks",
+              "status": true
+            },
+            {
+              "title": "Show Patient Balance",
+              "description": "Allow the user to access eRx screens",
+              "status": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Nurse",
+      "description": "Nurse has access to patient details, vitals, examination and clinical information.",
+      "permissions": [
+        {
+          "access_name": "Practice Access",
+          "data": [
+            {
+              "title": "Appointment Provider Selection",
+              "description": "Allow the user to schedule appointments for all providers in the practice group",
+              "status": true
+            },
+            {
+              "title": "Access To Message Center",
+              "description": "Allow the user to access the message center",
+              "status": true
+            },
+            {
+              "title": "Create And Update Contacts",
+              "description": "Allow the user to create, update and remove contacts",
+              "status": true
+            },
+            {
+              "title": "Provider Dropdown",
+              "description": "Allow the user to dropdown of provider switch (Practice Groups Only)",
+              "status": true
+            },
+            {
+              "title": "View Practice Group",
+              "description": "Allow the user to view practice group information",
+              "status": true
+            },
+            {
+              "title": "Settings",
+              "description": "Allow the user to view and edit doctor's profile",
+              "status": true
+            },
+            {
+              "title": "Manage Permissions",
+              "description": "Allow the user to manage permission of their doctors and staff",
+              "status": true
+            },
+            {
+              "title": "Manage Accounts",
+              "description": "Allow the user to create new or edit existing staff member accounts",
+              "status": true
+            },
+            {
+              "title": "Add New Referring Sources",
+              "description": "Allow the user to add new referring sources on the patients demographics screen",
+              "status": true
+            },
+            {
+              "title": "Access All Messages For Practice Group",
+              "description": "Allow the user to view and interact with the messages for their whole practice group",
+              "status": true
+            },
+            {
+              "title": "Access Scheduling",
+              "description": "Allow the user to view, add, and edit patient appointments and other scheduling features",
+              "status": true
+            },
+            {
+              "title": "Emergency Access",
+              "description": "Allow the user to temporarily request emergency access to Create and Update Patients, Access Scheduling and Access Clinical Notes system permissions",
+              "status": true
+            }
+          ]
+        },
+        {
+          "access_name": "EMR Access",
+          "data": [
+            {
+              "title": "Access Clinical Notes",
+              "description": "Allow the user to view and interact with the clinical notes components ",
+              "status": true
+            },
+            {
+              "title": "Sign/Lock Clinical Notes",
+              "description": "Allow the user to sign in and lock clinical notes",
+              "status": true
+            },
+            {
+              "title": "Manage Templates",
+              "description": "Allow the user to create new or edit existing clinical templates ",
+              "status": true
+            },
+            {
+              "title": "Use IPad EHR",
+              "description": "Allow the user to access the iPad EHR system",
+              "status": true
+            }
+          ]
+        },
+        {
+          "access_name": "Patients Access",
+          "data": [
+            {
+              "title": "Create And Update Patients",
+              "description": "Allow the user to create and update patient information",
+              "status": true
+            },
+            {
+              "title": "Access Patient Analytics",
+              "description": "Allow the user to access and interact with patient analytics",
+              "status": true
+            },
+            {
+              "title": "Share Patients",
+              "description": "Allow the user to access all patients in a practice group",
+              "status": true
+            },
+            {
+              "title": "Access Reports",
+              "description": "Allow the user to access and interact with reports",
+              "status": true
+            },
+            {
+              "title": "Export Patients",
+              "description": "Allow the user to use user export tools",
+              "status": true
+            }
+          ]
+        },
+        {
+          "access_name": "Billing Access",
+          "data": [
+            {
+              "title": "Access Billing",
+              "description": "Allow the user to view and interact with the billing system ",
+              "status": true
+            },
+            {
+              "title": "Show Patient Balance",
+              "description": "Allow the user to view the patients balance in the appointment screen and patient screen",
+              "status": true
+            },
+            {
+              "title": "Show Billing Tab",
+              "description": "Allow the user to view and edit information in the billing tab in the appointment view",
+              "status": true
+            },
+            {
+              "title": "Show Billing Summary",
+              "description": "Allow the user to view and edit information in the billing summary screen",
+              "status": true
+            },
+            {
+              "title": "Access Institutional Billing",
+              "description": "Allow the user to view and interact with the institutional claims",
+              "status": true
+            },
+            {
+              "title": "Billing Administrator",
+              "description": "Allow the user to manage sensitive billing data",
+              "status": true
+            },
+            {
+              "title": "Access Balance/Ledger",
+              "description": "Allow the user to view balance/ledger screen in the billing center",
+              "status": true
+            },
+            {
+              "title": "Access Patient Payments",
+              "description": "Allow the user to view patient payments screen in the billing center",
+              "status": true
+            },
+            {
+              "title": "Access Patient Statements",
+              "description": "Allow the user to view patient statements screen in the billing center",
+              "status": true
+            }
+          ]
+        },
+        {
+          "access_name": "eRx Access",
+          "data": [
+            {
+              "title": "Drug Interactions Check",
+              "description": "Allow the user to perform drug interaction checks",
+              "status": true
+            },
+            {
+              "title": "Show Patient Balance",
+              "description": "Allow the user to access eRx screens",
+              "status": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Office Manager",
+      "description": "Office manager has access to practice account and scheduling. ",
+      "permissions": [
+        {
+          "access_name": "Practice Access",
+          "data": [
+            {
+              "title": "Appointment Provider Selection",
+              "description": "Allow the user to schedule appointments for all providers in the practice group",
+              "status": true
+            },
+            {
+              "title": "Access To Message Center",
+              "description": "Allow the user to access the message center",
+              "status": true
+            },
+            {
+              "title": "Create And Update Contacts",
+              "description": "Allow the user to create, update and remove contacts",
+              "status": true
+            },
+            {
+              "title": "Provider Dropdown",
+              "description": "Allow the user to dropdown of provider switch (Practice Groups Only)",
+              "status": true
+            },
+            {
+              "title": "View Practice Group",
+              "description": "Allow the user to view practice group information",
+              "status": true
+            },
+            {
+              "title": "Settings",
+              "description": "Allow the user to view and edit doctor's profile",
+              "status": true
+            },
+            {
+              "title": "Manage Permissions",
+              "description": "Allow the user to manage permission of their doctors and staff",
+              "status": true
+            },
+            {
+              "title": "Manage Accounts",
+              "description": "Allow the user to create new or edit existing staff member accounts",
+              "status": true
+            },
+            {
+              "title": "Add New Referring Sources",
+              "description": "Allow the user to add new referring sources on the patients demographics screen",
+              "status": true
+            },
+            {
+              "title": "Access All Messages For Practice Group",
+              "description": "Allow the user to view and interact with the messages for their whole practice group",
+              "status": true
+            },
+            {
+              "title": "Access Scheduling",
+              "description": "Allow the user to view, add, and edit patient appointments and other scheduling features",
+              "status": true
+            },
+            {
+              "title": "Emergency Access",
+              "description": "Allow the user to temporarily request emergency access to Create and Update Patients, Access Scheduling and Access Clinical Notes system permissions",
+              "status": true
+            }
+          ]
+        },
+        {
+          "access_name": "EMR Access",
+          "data": [
+            {
+              "title": "Access Clinical Notes",
+              "description": "Allow the user to view and interact with the clinical notes components ",
+              "status": true
+            },
+            {
+              "title": "Sign/Lock Clinical Notes",
+              "description": "Allow the user to sign in and lock clinical notes",
+              "status": true
+            },
+            {
+              "title": "Manage Templates",
+              "description": "Allow the user to create new or edit existing clinical templates ",
+              "status": true
+            },
+            {
+              "title": "Use IPad EHR",
+              "description": "Allow the user to access the iPad EHR system",
+              "status": true
+            }
+          ]
+        },
+        {
+          "access_name": "Patients Access",
+          "data": [
+            {
+              "title": "Create And Update Patients",
+              "description": "Allow the user to create and update patient information",
+              "status": true
+            },
+            {
+              "title": "Access Patient Analytics",
+              "description": "Allow the user to access and interact with patient analytics",
+              "status": true
+            },
+            {
+              "title": "Share Patients",
+              "description": "Allow the user to access all patients in a practice group",
+              "status": true
+            },
+            {
+              "title": "Access Reports",
+              "description": "Allow the user to access and interact with reports",
+              "status": true
+            },
+            {
+              "title": "Export Patients",
+              "description": "Allow the user to use user export tools",
+              "status": true
+            }
+          ]
+        },
+        {
+          "access_name": "Billing Access",
+          "data": [
+            {
+              "title": "Access Billing",
+              "description": "Allow the user to view and interact with the billing system ",
+              "status": true
+            },
+            {
+              "title": "Show Patient Balance",
+              "description": "Allow the user to view the patients balance in the appointment screen and patient screen",
+              "status": true
+            },
+            {
+              "title": "Show Billing Tab",
+              "description": "Allow the user to view and edit information in the billing tab in the appointment view",
+              "status": true
+            },
+            {
+              "title": "Show Billing Summary",
+              "description": "Allow the user to view and edit information in the billing summary screen",
+              "status": true
+            },
+            {
+              "title": "Access Institutional Billing",
+              "description": "Allow the user to view and interact with the institutional claims",
+              "status": true
+            },
+            {
+              "title": "Billing Administrator",
+              "description": "Allow the user to manage sensitive billing data",
+              "status": true
+            },
+            {
+              "title": "Access Balance/Ledger",
+              "description": "Allow the user to view balance/ledger screen in the billing center",
+              "status": true
+            },
+            {
+              "title": "Access Patient Payments",
+              "description": "Allow the user to view patient payments screen in the billing center",
+              "status": true
+            },
+            {
+              "title": "Access Patient Statements",
+              "description": "Allow the user to view patient statements screen in the billing center",
+              "status": true
+            }
+          ]
+        },
+        {
+          "access_name": "eRx Access",
+          "data": [
+            {
+              "title": "Drug Interactions Check",
+              "description": "Allow the user to perform drug interaction checks",
+              "status": true
+            },
+            {
+              "title": "Show Patient Balance",
+              "description": "Allow the user to access eRx screens",
+              "status": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Billing Staff",
+      "description": "Billing staff has access to billing and reports.",
+      "permissions": [
+        {
+          "access_name": "Practice Access",
+          "data": [
+            {
+              "title": "Appointment Provider Selection",
+              "description": "Allow the user to schedule appointments for all providers in the practice group",
+              "status": true
+            },
+            {
+              "title": "Access To Message Center",
+              "description": "Allow the user to access the message center",
+              "status": true
+            },
+            {
+              "title": "Create And Update Contacts",
+              "description": "Allow the user to create, update and remove contacts",
+              "status": true
+            },
+            {
+              "title": "Provider Dropdown",
+              "description": "Allow the user to dropdown of provider switch (Practice Groups Only)",
+              "status": true
+            },
+            {
+              "title": "View Practice Group",
+              "description": "Allow the user to view practice group information",
+              "status": true
+            },
+            {
+              "title": "Settings",
+              "description": "Allow the user to view and edit doctor's profile",
+              "status": true
+            },
+            {
+              "title": "Manage Permissions",
+              "description": "Allow the user to manage permission of their doctors and staff",
+              "status": true
+            },
+            {
+              "title": "Manage Accounts",
+              "description": "Allow the user to create new or edit existing staff member accounts",
+              "status": true
+            },
+            {
+              "title": "Add New Referring Sources",
+              "description": "Allow the user to add new referring sources on the patients demographics screen",
+              "status": true
+            },
+            {
+              "title": "Access All Messages For Practice Group",
+              "description": "Allow the user to view and interact with the messages for their whole practice group",
+              "status": true
+            },
+            {
+              "title": "Access Scheduling",
+              "description": "Allow the user to view, add, and edit patient appointments and other scheduling features",
+              "status": true
+            },
+            {
+              "title": "Emergency Access",
+              "description": "Allow the user to temporarily request emergency access to Create and Update Patients, Access Scheduling and Access Clinical Notes system permissions",
+              "status": true
+            }
+          ]
+        },
+        {
+          "access_name": "EMR Access",
+          "data": [
+            {
+              "title": "Access Clinical Notes",
+              "description": "Allow the user to view and interact with the clinical notes components ",
+              "status": true
+            },
+            {
+              "title": "Sign/Lock Clinical Notes",
+              "description": "Allow the user to sign in and lock clinical notes",
+              "status": true
+            },
+            {
+              "title": "Manage Templates",
+              "description": "Allow the user to create new or edit existing clinical templates ",
+              "status": true
+            },
+            {
+              "title": "Use IPad EHR",
+              "description": "Allow the user to access the iPad EHR system",
+              "status": true
+            }
+          ]
+        },
+        {
+          "access_name": "Patients Access",
+          "data": [
+            {
+              "title": "Create And Update Patients",
+              "description": "Allow the user to create and update patient information",
+              "status": true
+            },
+            {
+              "title": "Access Patient Analytics",
+              "description": "Allow the user to access and interact with patient analytics",
+              "status": true
+            },
+            {
+              "title": "Share Patients",
+              "description": "Allow the user to access all patients in a practice group",
+              "status": true
+            },
+            {
+              "title": "Access Reports",
+              "description": "Allow the user to access and interact with reports",
+              "status": true
+            },
+            {
+              "title": "Export Patients",
+              "description": "Allow the user to use user export tools",
+              "status": true
+            }
+          ]
+        },
+        {
+          "access_name": "Billing Access",
+          "data": [
+            {
+              "title": "Access Billing",
+              "description": "Allow the user to view and interact with the billing system ",
+              "status": true
+            },
+            {
+              "title": "Show Patient Balance",
+              "description": "Allow the user to view the patients balance in the appointment screen and patient screen",
+              "status": true
+            },
+            {
+              "title": "Show Billing Tab",
+              "description": "Allow the user to view and edit information in the billing tab in the appointment view",
+              "status": true
+            },
+            {
+              "title": "Show Billing Summary",
+              "description": "Allow the user to view and edit information in the billing summary screen",
+              "status": true
+            },
+            {
+              "title": "Access Institutional Billing",
+              "description": "Allow the user to view and interact with the institutional claims",
+              "status": true
+            },
+            {
+              "title": "Billing Administrator",
+              "description": "Allow the user to manage sensitive billing data",
+              "status": true
+            },
+            {
+              "title": "Access Balance/Ledger",
+              "description": "Allow the user to view balance/ledger screen in the billing center",
+              "status": true
+            },
+            {
+              "title": "Access Patient Payments",
+              "description": "Allow the user to view patient payments screen in the billing center",
+              "status": true
+            },
+            {
+              "title": "Access Patient Statements",
+              "description": "Allow the user to view patient statements screen in the billing center",
+              "status": true
+            }
+          ]
+        },
+        {
+          "access_name": "eRx Access",
+          "data": [
+            {
+              "title": "Drug Interactions Check",
+              "description": "Allow the user to perform drug interaction checks",
+              "status": true
+            },
+            {
+              "title": "Show Patient Balance",
+              "description": "Allow the user to access eRx screens",
+              "status": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Receptionist",
+      "description": "Receptionist has access to scheduling. ",
+      "permissions": [
+        {
+          "access_name": "Practice Access",
+          "data": [
+            {
+              "title": "Appointment Provider Selection",
+              "description": "Allow the user to schedule appointments for all providers in the practice group",
+              "status": true
+            },
+            {
+              "title": "Access To Message Center",
+              "description": "Allow the user to access the message center",
+              "status": true
+            },
+            {
+              "title": "Create And Update Contacts",
+              "description": "Allow the user to create, update and remove contacts",
+              "status": true
+            },
+            {
+              "title": "Provider Dropdown",
+              "description": "Allow the user to dropdown of provider switch (Practice Groups Only)",
+              "status": true
+            },
+            {
+              "title": "View Practice Group",
+              "description": "Allow the user to view practice group information",
+              "status": true
+            },
+            {
+              "title": "Settings",
+              "description": "Allow the user to view and edit doctor's profile",
+              "status": true
+            },
+            {
+              "title": "Manage Permissions",
+              "description": "Allow the user to manage permission of their doctors and staff",
+              "status": true
+            },
+            {
+              "title": "Manage Accounts",
+              "description": "Allow the user to create new or edit existing staff member accounts",
+              "status": true
+            },
+            {
+              "title": "Add New Referring Sources",
+              "description": "Allow the user to add new referring sources on the patients demographics screen",
+              "status": true
+            },
+            {
+              "title": "Access All Messages For Practice Group",
+              "description": "Allow the user to view and interact with the messages for their whole practice group",
+              "status": true
+            },
+            {
+              "title": "Access Scheduling",
+              "description": "Allow the user to view, add, and edit patient appointments and other scheduling features",
+              "status": true
+            },
+            {
+              "title": "Emergency Access",
+              "description": "Allow the user to temporarily request emergency access to Create and Update Patients, Access Scheduling and Access Clinical Notes system permissions",
+              "status": true
+            }
+          ]
+        },
+        {
+          "access_name": "EMR Access",
+          "data": [
+            {
+              "title": "Access Clinical Notes",
+              "description": "Allow the user to view and interact with the clinical notes components ",
+              "status": true
+            },
+            {
+              "title": "Sign/Lock Clinical Notes",
+              "description": "Allow the user to sign in and lock clinical notes",
+              "status": true
+            },
+            {
+              "title": "Manage Templates",
+              "description": "Allow the user to create new or edit existing clinical templates ",
+              "status": true
+            },
+            {
+              "title": "Use IPad EHR",
+              "description": "Allow the user to access the iPad EHR system",
+              "status": true
+            }
+          ]
+        },
+        {
+          "access_name": "Patients Access",
+          "data": [
+            {
+              "title": "Create And Update Patients",
+              "description": "Allow the user to create and update patient information",
+              "status": true
+            },
+            {
+              "title": "Access Patient Analytics",
+              "description": "Allow the user to access and interact with patient analytics",
+              "status": true
+            },
+            {
+              "title": "Share Patients",
+              "description": "Allow the user to access all patients in a practice group",
+              "status": true
+            },
+            {
+              "title": "Access Reports",
+              "description": "Allow the user to access and interact with reports",
+              "status": true
+            },
+            {
+              "title": "Export Patients",
+              "description": "Allow the user to use user export tools",
+              "status": true
+            }
+          ]
+        },
+        {
+          "access_name": "Billing Access",
+          "data": [
+            {
+              "title": "Access Billing",
+              "description": "Allow the user to view and interact with the billing system ",
+              "status": true
+            },
+            {
+              "title": "Show Patient Balance",
+              "description": "Allow the user to view the patients balance in the appointment screen and patient screen",
+              "status": true
+            },
+            {
+              "title": "Show Billing Tab",
+              "description": "Allow the user to view and edit information in the billing tab in the appointment view",
+              "status": true
+            },
+            {
+              "title": "Show Billing Summary",
+              "description": "Allow the user to view and edit information in the billing summary screen",
+              "status": true
+            },
+            {
+              "title": "Access Institutional Billing",
+              "description": "Allow the user to view and interact with the institutional claims",
+              "status": true
+            },
+            {
+              "title": "Billing Administrator",
+              "description": "Allow the user to manage sensitive billing data",
+              "status": true
+            },
+            {
+              "title": "Access Balance/Ledger",
+              "description": "Allow the user to view balance/ledger screen in the billing center",
+              "status": true
+            },
+            {
+              "title": "Access Patient Payments",
+              "description": "Allow the user to view patient payments screen in the billing center",
+              "status": true
+            },
+            {
+              "title": "Access Patient Statements",
+              "description": "Allow the user to view patient statements screen in the billing center",
+              "status": true
+            }
+          ]
+        },
+        {
+          "access_name": "eRx Access",
+          "data": [
+            {
+              "title": "Drug Interactions Check",
+              "description": "Allow the user to perform drug interaction checks",
+              "status": true
+            },
+            {
+              "title": "Show Patient Balance",
+              "description": "Allow the user to access eRx screens",
+              "status": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

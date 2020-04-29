@@ -1,0 +1,12 @@
+[
+  {
+    "practiceId": "002055b4-ec3c-ea11-9192-0cc47a65f3a3",
+    "noOfExamHours": 1,
+    "examRooms": [
+      {
+        "examHourId": "2bde4a7b-073d-ea11-9192-0cc47a65f3a3",
+        "examRoom": "Room1"
+      }
+    ]
+  }
+]

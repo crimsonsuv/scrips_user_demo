@@ -1,0 +1,26 @@
+{
+  "name": "global_configuration",
+  "version": "1.0.0",
+  "dev": {
+    "go_to_home_if_logged_in": false,
+    "initial-route": "login-sign-up",
+    "initial-route-experimental-platforms": "login-sign-up",
+    "default-login-sign-up-screen_prv": "login-sign-up",
+    "default-login-sign-up-screen": "login-sign-up-access-code",
+    "dummy_user_name": "user1@scrips.com",
+    "dummy_user_password": "123456"
+  },
+  "test": {
+    "go_to_home_if_logged_in": true,
+    "initial-route": "login-sign-up",
+    "initial-route-experimental-platforms": "login-sign-up-access-code",
+    "default-login-sign-up-screen": "login-sign-up-access-code"
+  },
+  "prod": {
+    "go_to_home_if_logged_in": true,
+    "initial-route": "login-sign-up",
+    "initial-route-experimental-platforms": "login-sign-up-access-code",
+    "default-login-sign-up-screen": "login-sign-up-access-code"
+  }
+}
+

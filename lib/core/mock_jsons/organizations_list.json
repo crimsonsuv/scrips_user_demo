@@ -1,0 +1,24 @@
+[
+  {
+    "UserId": "e9839906-7b76-4f5e-95d0-ad18fc1aaba9",
+    "OrganizationId": "2417a0b8-934c-ea11-9192-0cc47a65f3a3",
+    "OrganizationName": "string",
+    "DateOfSignUp": "2020-02-11T05:59:57.44",
+    "NoOfUsers": 0,
+    "ContactNumber": "string",
+    "ContactName": "string string",
+    "LastSignIn": "2020-02-11T05:59:57.44",
+    "IsActive": true
+  },
+  {
+    "UserId": "a4b54c6c-5a81-487c-abb9-3772c95ecd0e",
+    "OrganizationId": "09118856-bb4c-ea11-9192-0cc47a65f3a3",
+    "OrganizationName": "string",
+    "DateOfSignUp": "2020-02-11T10:43:31.413",
+    "NoOfUsers": 0,
+    "ContactNumber": "",
+    "ContactName": "string string",
+    "LastSignIn": "2020-02-11T10:43:31.413",
+    "IsActive": true
+  }
+]

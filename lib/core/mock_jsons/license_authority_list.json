@@ -1,0 +1,22 @@
+[
+  {
+    "Id": "b89aef8d-c3ea-e711-811e-0855903a0377",
+    "Name": "DHA"
+  },
+  {
+    "Id": "14fce83c-b0ad-e711-811d-0025903a03a1",
+    "Name": "DHCC"
+  },
+  {
+    "Id": "0ffce83c-b0ad-e711-811d-0025903a03a1",
+    "Name": "EHA"
+  },
+  {
+    "Id": "b89aef8d-c3ea-e711-811e-0855903a03a5",
+    "Name": "HAAD"
+  },
+  {
+    "Id": "0dfce83c-b0ad-e711-811d-0025903a03a1",
+    "Name": "MOH"
+  }
+]

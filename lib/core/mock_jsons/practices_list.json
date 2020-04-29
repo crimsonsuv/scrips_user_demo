@@ -1,0 +1,37 @@
+[
+  {
+    "practiceName": "string",
+    "organizationId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "practiceSetupId": "6dda432f-cd3c-ea11-9192-0cc47a65f3a3",
+    "address": "string",
+    "practiceImageURL": "/PracticeSetupImages/PracticeSetup_f365b34c-b3ed-4d5c-a0a2-a3b0a729e2c9_string.jpg"
+  },
+  {
+    "practiceName": "string",
+    "organizationId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "practiceSetupId": "35ac58bf-d83c-ea11-9192-0cc47a65f3a3",
+    "address": "string",
+    "practiceImageURL": "/PracticeSetupImages/PracticeSetup_0047ec38-525d-4fcd-b43e-cf3680c2da75_string.jpg"
+  },
+  {
+    "practiceName": "Sample Practice",
+    "organizationId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "practiceSetupId": "002055b4-ec3c-ea11-9192-0cc47a65f3a3",
+    "address": "Sample Address",
+    "practiceImageURL": "/PracticeSetupImages/PracticeSetup_7c7a4995-bc57-42c8-8b5b-61677161034a_Sample Practice.jpg"
+  },
+  {
+    "practiceName": "string",
+    "organizationId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "practiceSetupId": "9ebe6d47-f13c-ea11-9192-0cc47a65f3a3",
+    "address": "string",
+    "practiceImageURL": ""
+  },
+  {
+    "practiceName": "Sample Practice",
+    "organizationId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "practiceSetupId": "c0c5ddac-f13c-ea11-9192-0cc47a65f3a3",
+    "address": "Sample Address",
+    "practiceImageURL": ""
+  }
+]
