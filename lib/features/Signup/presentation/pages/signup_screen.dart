@@ -384,7 +384,7 @@ class _SignupScreenState extends State<SignupScreen> with TickerProviderStateMix
                                   vertical: 26,
                                 ),
                                 FieldAndLabel(
-                                  isMandatory: false,
+                                  isMandatory: true,
                                   margin: EdgeInsets.all(0),
                                   padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
                                   fieldBackgroundColor: textFieldBGcolor,

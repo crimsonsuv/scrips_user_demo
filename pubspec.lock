@@ -9,7 +9,7 @@ packages:
     source: hosted
     version: "3.0.0"
   after_init:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: after_init
       url: "https://pub.dartlang.org"
@@ -149,7 +149,7 @@ packages:
     source: hosted
     version: "1.3.6"
   dartz:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: dartz
       url: "https://pub.dartlang.org"
@@ -170,14 +170,14 @@ packages:
     source: hosted
     version: "0.4.4"
   dio:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: dio
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.9"
   equatable:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: equatable
       url: "https://pub.dartlang.org"
@@ -217,12 +217,26 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_bloc:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: flutter_bloc
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.21.0"
+  flutter_launcher_icons:
+    dependency: "direct main"
+    description:
+      name: flutter_launcher_icons
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.7.5"
+  flutter_launcher_name:
+    dependency: "direct main"
+    description:
+      name: flutter_launcher_name
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.1"
   flutter_localizations:
     dependency: "direct dev"
     description: flutter
@@ -449,7 +463,7 @@ packages:
     source: hosted
     version: "1.0.1+2"
   oktoast:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: oktoast
       url: "https://pub.dartlang.org"
@@ -484,7 +498,7 @@ packages:
     source: hosted
     version: "0.1.4"
   path_provider:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: path_provider
       url: "https://pub.dartlang.org"
@@ -596,7 +610,7 @@ packages:
     source: path
     version: "1.0.0+1"
   shared_preferences:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: shared_preferences
       url: "https://pub.dartlang.org"
@@ -706,7 +720,7 @@ packages:
     source: hosted
     version: "1.0.1"
   url_launcher:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: url_launcher
       url: "https://pub.dartlang.org"
@@ -734,14 +748,14 @@ packages:
     source: hosted
     version: "0.1.1+2"
   uuid:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: uuid
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.4"
   validators:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: validators
       url: "https://pub.dartlang.org"
