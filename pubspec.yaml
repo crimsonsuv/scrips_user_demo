@@ -50,6 +50,7 @@ dev_dependencies:
   oktoast: ^2.3.0
   uuid: ^2.0.4
   dio: ^3.0.8
+  validators: ^2.0.0
 
 
 flutter_launcher_name:

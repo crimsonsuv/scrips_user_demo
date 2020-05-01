@@ -5,15 +5,8 @@ class AppRoutePaths {
 
   // paths common to all; 4 apps
   static const String Landing = '/';
-  static const String Home = '/home';
+  static const String PatientList = '/patientList';
   static const String Login = '/login';
   static const String SignUp = '/signup';
-  static const String CreatePassword = '/create-password';
-  static const String ForgotPassword = '/forgot-password';
-  static const String PracticeSetup = '/practice-setup';
-  static const String CreateOrganization = '/create-organization';
-  static const String RestPasswordAccessCode = '/reset-password-access-code';
-  static const String RestPasswordNewPassword = '/reset-password-new-password';
-  static const String PasswordChangedSuccess =
-      '/reset-password-changed-success';
+  static const String Questionnaire = '/questionnaire';
 }
