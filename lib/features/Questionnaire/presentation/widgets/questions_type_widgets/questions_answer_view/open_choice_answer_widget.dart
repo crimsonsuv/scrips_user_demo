@@ -3,24 +3,25 @@ import 'package:flutter/material.dart';
 import 'package:scrips_core/ui_helpers/app_colors.dart';
 import 'package:scrips_core/ui_helpers/text_styles.dart';
 import 'package:scrips_core/widgets/general/space.dart';
-import 'package:scrips_ua/features/Questionnaire/data/datamodels/questionnaire_model.dart' as questionnaire;
-import 'package:scrips_ua/features/Questionnaire/data/datamodels/questionnaire_response_model.dart' as questionnaireResponse;
+import 'package:scrips_ua/core/util/utils.dart';
+import 'package:scrips_ua/features/Questionnaire/data/datamodels/questionnaire_model.dart'
+    as questionnaire;
+import 'package:scrips_ua/features/Questionnaire/data/datamodels/questionnaire_response_model.dart'
+    as questionnaireResponse;
 import 'package:scrips_ua/features/Questionnaire/presentation/widgets/questions_type_widgets/common/answer_top_buttons_widget.dart';
 
 class OpenChoiceAnswerWidget extends StatefulWidget {
-  OpenChoiceAnswerWidget(
-      {Key key,
-      this.showButtons = true,
-      this.questionItem,
-        this.answerItem,
-        this.onChanged,
-      })
-      : super(key: key);
+  OpenChoiceAnswerWidget({
+    Key key,
+    this.showButtons = true,
+    this.questionItem,
+    this.answerItem,
+    this.onChanged,
+  }) : super(key: key);
   final bool showButtons;
   final questionnaire.Item questionItem;
   final questionnaireResponse.Item answerItem;
   final Function onChanged;
-
 
   @override
   _OpenChoiceAnswerWidgetState createState() => _OpenChoiceAnswerWidgetState();
@@ -56,6 +57,7 @@ class _OpenChoiceAnswerWidgetState extends State<OpenChoiceAnswerWidget> {
                   ? Column(
                       children: <Widget>[
                         AnswerTopButtonsWidget(
+                          image: groupIcon(widget?.questionItem?.groups?.name),
                           title:
                               "${widget?.questionItem?.groups?.name ?? "N/A"}"
                                   .toUpperCase(),
@@ -112,19 +114,73 @@ class _OpenChoiceAnswerWidgetState extends State<OpenChoiceAnswerWidget> {
                                 height: 16.0,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(8),
-                                    color: ((widget?.answerItem?.answer?.valueCoding?.where((element) => element.code == widget?.questionItem?.answerOptions[index].valueCoding.code)?.toList()?.length ?? 0) > 0)
+                                    color: ((widget?.answerItem?.answer
+                                                    ?.valueCoding
+                                                    ?.where((element) =>
+                                                        element.code ==
+                                                        widget
+                                                            ?.questionItem
+                                                            ?.answerOptions[
+                                                                index]
+                                                            .valueCoding
+                                                            .code)
+                                                    ?.toList()
+                                                    ?.length ??
+                                                0) >
+                                            0)
                                         ? enabledBtnBGColor
                                         : Colors.transparent,
                                     border: Border.all(
-                                        color: ((widget?.answerItem?.answer?.valueCoding?.where((element) => element.code == widget?.questionItem?.answerOptions[index].valueCoding.code)?.toList()?.length ?? 0) > 0)
+                                        color: ((widget?.answerItem?.answer
+                                                        ?.valueCoding
+                                                        ?.where((element) => element.code == widget?.questionItem?.answerOptions[index].valueCoding.code)
+                                                        ?.toList()
+                                                        ?.length ??
+                                                    0) >
+                                                0)
                                             ? enabledBtnBGColor
                                             : Colors.grey)),
                                 child: FlatButton(
-                                  onPressed: (){
-                                    if(((widget?.answerItem?.answer?.valueCoding?.where((element) => element.code == widget?.questionItem?.answerOptions[index].valueCoding.code)?.toList()?.length ?? 0) > 0)){
-                                      widget.answerItem.answer.valueCoding.removeWhere((element) => element.code == widget?.questionItem?.answerOptions[index].valueCoding.code);
+                                  onPressed: () {
+                                    if (((widget?.answerItem?.answer
+                                                ?.valueCoding
+                                                ?.where((element) =>
+                                                    element.code ==
+                                                    widget
+                                                        ?.questionItem
+                                                        ?.answerOptions[index]
+                                                        .valueCoding
+                                                        .code)
+                                                ?.toList()
+                                                ?.length ??
+                                            0) >
+                                        0)) {
+                                      widget.answerItem.answer.valueCoding
+                                          .removeWhere((element) =>
+                                              element.code ==
+                                              widget
+                                                  ?.questionItem
+                                                  ?.answerOptions[index]
+                                                  .valueCoding
+                                                  .code);
                                     } else {
-                                      widget.answerItem.answer.valueCoding.add(questionnaireResponse.ValueCoding(code: widget?.questionItem?.answerOptions[index].valueCoding.code,display: widget?.questionItem?.answerOptions[index].valueCoding.display, system: widget?.questionItem?.answerOptions[index].valueCoding.system));
+                                      widget.answerItem.answer.valueCoding.add(
+                                          questionnaireResponse.ValueCoding(
+                                              code: widget
+                                                  ?.questionItem
+                                                  ?.answerOptions[index]
+                                                  .valueCoding
+                                                  .code,
+                                              display: widget
+                                                  ?.questionItem
+                                                  ?.answerOptions[index]
+                                                  .valueCoding
+                                                  .display,
+                                              system: widget
+                                                  ?.questionItem
+                                                  ?.answerOptions[index]
+                                                  .valueCoding
+                                                  .system));
                                     }
                                     widget.onChanged(widget.answerItem);
                                   },

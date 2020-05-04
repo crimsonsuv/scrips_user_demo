@@ -1,4 +1,5 @@
 import 'dart:core';
+
 import 'package:dio/dio.dart';
 import 'package:scrips_core/constants/app_routes.dart';
 import 'package:scrips_core/constants/status_objects.dart';
@@ -17,5 +18,29 @@ Failure handleFailure(DioError e) {
         "Something bad happend in Server, please contact scrips support.");
   } else {
     return Failure(e?.message ?? "");
+  }
+}
+
+String groupIcon(String name) {
+  switch (name) {
+    case "Patient":
+    case "Gender":
+      return "ic_patient";
+      break;
+    case "Conditions":
+      return "ic_conditions";
+      break;
+    case "Life Style":
+      return "ic_lifestyle";
+      break;
+    case "Allergies":
+    case "Food Allergies":
+      return "ic_allergy";
+      break;
+    case "Medications":
+      return "ic_medication";
+      break;
+    default:
+      return "ic_patient";
   }
 }

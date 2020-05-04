@@ -27,15 +27,16 @@ class SignupScreen extends StatefulWidget {
   _SignupScreenState createState() => _SignupScreenState();
 }
 
-class _SignupScreenState extends State<SignupScreen> with TickerProviderStateMixin {
+class _SignupScreenState extends State<SignupScreen>
+    with TickerProviderStateMixin {
   final bloc = uaSl<SignupBloc>();
   bool isLoading = false;
   bool isNextEnabled = false;
-  String fistName ="";
-  String lastName ="";
-  String email ="";
+  String fistName = "";
+  String lastName = "";
+  String email = "";
   DateTime dob;
-  String contact ="";
+  String contact = "";
   String gender;
   List<Gender> genderList;
   List<PatientList> patientList;
@@ -51,8 +52,6 @@ class _SignupScreenState extends State<SignupScreen> with TickerProviderStateMix
     // TODO: implement dispose
     super.dispose();
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -75,20 +74,21 @@ class _SignupScreenState extends State<SignupScreen> with TickerProviderStateMix
               isLoading = true;
             } else if (state is LoadingEndState) {
               isLoading = false;
-            } else if(state is EnableNextState){
+            } else if (state is EnableNextState) {
               isNextEnabled = state.status;
-            } else if(state is GetPatientState){
+            } else if (state is GetPatientState) {
               patientList = state.patients;
-              if(patientList.length == 1){
+              if (patientList.length == 1) {
                 Future.delayed(Duration(milliseconds: 100), () {
-                  Navigator.pushNamed(context, AppRoutePaths.Questionnaire, arguments: patientList.first.patientId);
+                  Navigator.pushNamed(context, AppRoutePaths.Questionnaire,
+                      arguments: patientList.first.patientId);
                 });
               } else {
                 Future.delayed(Duration(milliseconds: 100), () {
-                  Navigator.pushNamed(context, AppRoutePaths.PatientList, arguments: patientList);
+                  Navigator.pushNamed(context, AppRoutePaths.PatientList,
+                      arguments: patientList);
                 });
               }
-
             } else if (state is FetchGendersState) {
               genderList = state.genderList;
             }
@@ -107,84 +107,94 @@ class _SignupScreenState extends State<SignupScreen> with TickerProviderStateMix
     );
   }
 
-  Widget body(context){
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: bgColor,
-        appBar: AppBar(
-          backgroundColor: enabledBtnTextColor,
-          elevation: 0.5,
-          title: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(top: 6),
-                child: Images.instance.asset(name: "ic_branding_small"),
-              ),
-            ],
-          ),
-          leading: InkWell(onTap:(){
-            Navigator.pop(context);
-          },child: Images.instance.asset(name: "ic_back")),
-          actions: <Widget>[
-            BlocBuilder<SignupBloc, SignupState>(
-              bloc: bloc,
-              builder: (context, state) {
-                if (state is EnableNextState) {
-                  dob = state.dob;
-                }
-                return InkWell(
-                  onTap: (isNextEnabled) ?  (){
-                    bloc.dispatch(FetchPatientEvent(firstName: fistName, lastName: lastName, email: email, dob: dob, contact: contact, gender: gender));
-                  } : null,
-                  child: Container(child: Padding(
-                    padding: const EdgeInsets.only(right: 16),
-                    child: Center(child: Text("NEXT", style: semiBoldLabelTextStyle(15, isNextEnabled ? enabledBtnBGColor : disabledBtnBGColor),)),
-                  )),
-                );
-              },
+  Widget body(context) {
+    return Scaffold(
+      backgroundColor: bgColor,
+      appBar: AppBar(
+        backgroundColor: enabledBtnTextColor,
+        elevation: 0.5,
+        title: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top: 6),
+              child: Images.instance.asset(name: "ic_branding_small"),
             ),
           ],
         ),
-        body: Column(
+        leading: InkWell(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Images.instance.asset(name: "ic_back")),
+        actions: <Widget>[
+          BlocBuilder<SignupBloc, SignupState>(
+            bloc: bloc,
+            builder: (context, state) {
+              if (state is EnableNextState) {
+                dob = state.dob;
+              }
+              return InkWell(
+                onTap: (isNextEnabled)
+                    ? () {
+                        bloc.dispatch(FetchPatientEvent(
+                            firstName: fistName,
+                            lastName: lastName,
+                            email: email,
+                            dob: dob,
+                            contact: contact,
+                            gender: gender));
+                      }
+                    : null,
+                child: Container(
+                    child: Padding(
+                  padding: const EdgeInsets.only(right: 16),
+                  child: Center(
+                      child: Text(
+                    "NEXT",
+                    style: semiBoldLabelTextStyle(15,
+                        isNextEnabled ? enabledBtnBGColor : disabledBtnBGColor),
+                  )),
+                )),
+              );
+            },
+          ),
+        ],
+      ),
+      body: SafeArea(
+        child: Column(
           children: <Widget>[
             isLoading
                 ? Container(
-              color: separatorColor,
-              child: Padding(
-                padding: const EdgeInsets.only(
-                    top: 16, bottom: 16),
-                child: Center(
-                    child: Row(
-                      crossAxisAlignment:
-                      CrossAxisAlignment.center,
-                      mainAxisAlignment:
-                      MainAxisAlignment.center,
-                      children: <Widget>[
-                        SizedBox(
-                            height: 30,
-                            width: 30,
-                            child:
-                            CircularProgressIndicator(
-                              valueColor:
-                              AlwaysStoppedAnimation<
-                                  Color>(
-                                  enabledBtnBGColor),
-                            )),
-                        Space(
-                          horizontal: 20,
-                        ),
-                        Text(
-                            (isNextEnabled) ? "Please wait, sending data.." : "Please wait, fetching data..",
-                            style:
-                            semiBoldLabelTextStyle(
-                                14,
-                                regularTextColor)),
-                      ],
-                    )),
-              ),
-            )
+                    color: separatorColor,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 16, bottom: 16),
+                      child: Center(
+                          child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          SizedBox(
+                              height: 30,
+                              width: 30,
+                              child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                    enabledBtnBGColor),
+                              )),
+                          Space(
+                            horizontal: 20,
+                          ),
+                          Text(
+                              (isNextEnabled)
+                                  ? "Please wait, sending data.."
+                                  : "Please wait, fetching data..",
+                              style:
+                                  semiBoldLabelTextStyle(14, regularTextColor)),
+                        ],
+                      )),
+                    ),
+                  )
                 : Container(),
             Expanded(
               child: SingleChildScrollView(
@@ -195,11 +205,25 @@ class _SignupScreenState extends State<SignupScreen> with TickerProviderStateMix
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
-                      Space(vertical: 24,),
-                      Text("Enter Your Details", style: boldLabelTextStyle(17, textInputColor), textAlign: TextAlign.center,),
-                      Space(vertical: 8,),
-                      Text("This info lets providers give more helpful, \npersonalized experience", style: normalLabelTextStyle(15, regularTextColor), textAlign: TextAlign.center,),
-                      Space(vertical: 24,),
+                      Space(
+                        vertical: 24,
+                      ),
+                      Text(
+                        "Enter Your Details",
+                        style: boldLabelTextStyle(17, textInputColor),
+                        textAlign: TextAlign.center,
+                      ),
+                      Space(
+                        vertical: 8,
+                      ),
+                      Text(
+                        "This info lets providers give more helpful, \npersonalized experience",
+                        style: normalLabelTextStyle(15, regularTextColor),
+                        textAlign: TextAlign.center,
+                      ),
+                      Space(
+                        vertical: 24,
+                      ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: Container(
@@ -208,24 +232,32 @@ class _SignupScreenState extends State<SignupScreen> with TickerProviderStateMix
                             borderRadius: BorderRadius.circular(13),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 26),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 24, vertical: 26),
                             child: Column(
                               children: <Widget>[
                                 FieldAndLabel(
                                   isMandatory: true,
                                   margin: EdgeInsets.all(0),
-                                  padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 0, horizontal: 0),
                                   fieldBackgroundColor: textFieldBGcolor,
                                   fieldTextColor: textInputColor,
                                   maxLength: 50,
                                   fieldValue: fistName,
                                   fieldType: FieldType.TextField,
-                                  labelTextStyle: defaultFieldLabelStyle(null, null),
+                                  labelTextStyle:
+                                      defaultFieldLabelStyle(null, null),
                                   labelValue: "FIRST NAME".toUpperCase(),
                                   onChanged: (value, FieldAndLabelState state) {
                                     fistName = value;
-                                    bloc
-                                        .dispatch(EnableNextEvent(firstName: fistName, lastName: lastName, dob: dob, email: email, gender: gender, contact: contact));
+                                    bloc.dispatch(EnableNextEvent(
+                                        firstName: fistName,
+                                        lastName: lastName,
+                                        dob: dob,
+                                        email: email,
+                                        gender: gender,
+                                        contact: contact));
                                   },
                                   validationMessage: "",
                                   placeholder: "Enter first name",
@@ -238,17 +270,24 @@ class _SignupScreenState extends State<SignupScreen> with TickerProviderStateMix
                                 FieldAndLabel(
                                   isMandatory: false,
                                   margin: EdgeInsets.all(0),
-                                  padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 0, horizontal: 0),
                                   fieldBackgroundColor: textFieldBGcolor,
                                   fieldTextColor: textInputColor,
                                   maxLength: 50,
                                   fieldValue: "",
                                   fieldType: FieldType.TextField,
-                                  labelTextStyle: defaultFieldLabelStyle(null, null),
+                                  labelTextStyle:
+                                      defaultFieldLabelStyle(null, null),
                                   labelValue: "MIDDLE NAME".toUpperCase(),
                                   onChanged: (value, FieldAndLabelState state) {
-                                    bloc
-                                        .dispatch(EnableNextEvent(firstName: fistName, lastName: lastName, dob: dob, email: email, gender: gender, contact: contact));
+                                    bloc.dispatch(EnableNextEvent(
+                                        firstName: fistName,
+                                        lastName: lastName,
+                                        dob: dob,
+                                        email: email,
+                                        gender: gender,
+                                        contact: contact));
                                   },
                                   validationMessage: "",
                                   placeholder: "Enter middle name (Optional)",
@@ -261,18 +300,25 @@ class _SignupScreenState extends State<SignupScreen> with TickerProviderStateMix
                                 FieldAndLabel(
                                   isMandatory: true,
                                   margin: EdgeInsets.all(0),
-                                  padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 0, horizontal: 0),
                                   fieldBackgroundColor: textFieldBGcolor,
                                   fieldTextColor: textInputColor,
                                   maxLength: 50,
                                   fieldValue: lastName,
                                   fieldType: FieldType.TextField,
-                                  labelTextStyle: defaultFieldLabelStyle(null, null),
+                                  labelTextStyle:
+                                      defaultFieldLabelStyle(null, null),
                                   labelValue: "LAST NAME".toUpperCase(),
                                   onChanged: (value, FieldAndLabelState state) {
                                     lastName = value;
-                                    bloc
-                                        .dispatch(EnableNextEvent(firstName: fistName, lastName: lastName, dob: dob, email: email, gender: gender, contact: contact));
+                                    bloc.dispatch(EnableNextEvent(
+                                        firstName: fistName,
+                                        lastName: lastName,
+                                        dob: dob,
+                                        email: email,
+                                        gender: gender,
+                                        contact: contact));
                                   },
                                   validationMessage: "",
                                   placeholder: "Enter last name",
@@ -291,21 +337,31 @@ class _SignupScreenState extends State<SignupScreen> with TickerProviderStateMix
                                     return FieldAndLabel(
                                       isMandatory: true,
                                       margin: EdgeInsets.all(0),
-                                      padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+                                      padding: EdgeInsets.symmetric(
+                                          vertical: 0, horizontal: 0),
                                       fieldBackgroundColor: textFieldBGcolor,
                                       fieldTextColor: textInputColor,
                                       fieldType: FieldType.DatePicker,
-                                      icon: Images.instance.asset(name: "ic_calendar_small"),
-                                      rightIcon: Images.instance.asset(name: "ic_drop_down"),
+                                      icon: Images.instance
+                                          .asset(name: "ic_calendar_small"),
+                                      rightIcon: Images.instance
+                                          .asset(name: "ic_drop_down"),
                                       fieldValue: dob,
                                       firstDate: null,
                                       lastDate: DateTime.now(),
-                                      labelTextStyle: defaultFieldLabelStyle(null, null),
+                                      labelTextStyle:
+                                          defaultFieldLabelStyle(null, null),
                                       labelValue: "DATE OF BIRTH",
-                                      onChanged: (value, FieldAndLabelState state) {
+                                      onChanged:
+                                          (value, FieldAndLabelState state) {
                                         dob = value;
-                                        bloc
-                                            .dispatch(EnableNextEvent(firstName: fistName, lastName: lastName, dob: dob, email: email, gender: gender, contact: contact));
+                                        bloc.dispatch(EnableNextEvent(
+                                            firstName: fistName,
+                                            lastName: lastName,
+                                            dob: dob,
+                                            email: email,
+                                            gender: gender,
+                                            contact: contact));
                                       },
                                       validationMessage: "",
                                       placeholder: "Select date of birth",
@@ -326,23 +382,35 @@ class _SignupScreenState extends State<SignupScreen> with TickerProviderStateMix
                                     return FieldAndLabel(
                                       isMandatory: true,
                                       margin: EdgeInsets.all(0),
-                                      padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+                                      padding: EdgeInsets.symmetric(
+                                          vertical: 0, horizontal: 0),
                                       fieldBackgroundColor: textFieldBGcolor,
                                       fieldValue: gender,
                                       tagsItems: ((genderList?.length ?? 0) > 0)
                                           ? genderList
-                                          .map((item) => ValueDisplayPair(item?.id ?? '',
-                                          item?.gender?.toLowerCase()?.capitalize() ?? ''))
-                                          .toList()
+                                              .map((item) => ValueDisplayPair(
+                                                  item?.id ?? '',
+                                                  item?.gender
+                                                          ?.toLowerCase()
+                                                          ?.capitalize() ??
+                                                      ''))
+                                              .toList()
                                           : null,
                                       fieldTextColor: textInputColor,
                                       fieldType: FieldType.SingleTagPicker,
-                                      labelTextStyle: defaultFieldLabelStyle(null, null),
+                                      labelTextStyle:
+                                          defaultFieldLabelStyle(null, null),
                                       labelValue: "GENDER".toUpperCase(),
-                                      onChanged: (value, FieldAndLabelState state) {
+                                      onChanged:
+                                          (value, FieldAndLabelState state) {
                                         gender = value;
-                                        bloc
-                                            .dispatch(EnableNextEvent(firstName: fistName, lastName: lastName, dob: dob, email: email, gender: gender, contact: contact));
+                                        bloc.dispatch(EnableNextEvent(
+                                            firstName: fistName,
+                                            lastName: lastName,
+                                            dob: dob,
+                                            email: email,
+                                            gender: gender,
+                                            contact: contact));
                                       },
                                       validationMessage: "",
                                       axis: Axis.vertical,
@@ -356,24 +424,32 @@ class _SignupScreenState extends State<SignupScreen> with TickerProviderStateMix
                                 FieldAndLabel(
                                   isMandatory: true,
                                   margin: EdgeInsets.all(0),
-                                  padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 0, horizontal: 0),
                                   fieldBackgroundColor: textFieldBGcolor,
                                   fieldTextColor: textInputColor,
                                   fieldType: FieldType.PhoneField,
                                   country: null,
                                   fieldValue: contact,
-                                  labelTextStyle: defaultFieldLabelStyle(null, null),
+                                  labelTextStyle:
+                                      defaultFieldLabelStyle(null, null),
                                   labelValue: "CONTACT NUMBER".toUpperCase(),
                                   maxLength: 20,
                                   onChanged: (value, FieldAndLabelState state) {
-                                    if (state.currentValidationMessage.length > 0 &&
+                                    if (state.currentValidationMessage.length >
+                                            0 &&
                                         value.toString().length > 0) {
                                       contact = "";
                                     } else {
                                       contact = value;
                                     }
-                                    bloc
-                                        .dispatch(EnableNextEvent(firstName: fistName, lastName: lastName, dob: dob, email: email, gender: gender, contact: contact));
+                                    bloc.dispatch(EnableNextEvent(
+                                        firstName: fistName,
+                                        lastName: lastName,
+                                        dob: dob,
+                                        email: email,
+                                        gender: gender,
+                                        contact: contact));
                                   },
                                   validationMessage: "",
                                   placeholder: "e.g. +971 23 345 6789",
@@ -386,10 +462,12 @@ class _SignupScreenState extends State<SignupScreen> with TickerProviderStateMix
                                 FieldAndLabel(
                                   isMandatory: true,
                                   margin: EdgeInsets.all(0),
-                                  padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 0, horizontal: 0),
                                   fieldBackgroundColor: textFieldBGcolor,
                                   fieldType: FieldType.TextField,
-                                  labelTextStyle: defaultFieldLabelStyle(null, null),
+                                  labelTextStyle:
+                                      defaultFieldLabelStyle(null, null),
                                   labelValue: "EMAIL ADDRESS".toUpperCase(),
                                   fieldValue: email,
                                   placeholder: "Enter email address",
@@ -406,8 +484,13 @@ class _SignupScreenState extends State<SignupScreen> with TickerProviderStateMix
                                       email = value;
                                       state.setValidationMessage('');
                                     }
-                                    bloc
-                                        .dispatch(EnableNextEvent(firstName: fistName, lastName: lastName, dob: dob, email: email, gender: gender, contact: contact));
+                                    bloc.dispatch(EnableNextEvent(
+                                        firstName: fistName,
+                                        lastName: lastName,
+                                        dob: dob,
+                                        email: email,
+                                        gender: gender,
+                                        contact: contact));
                                   },
                                 ),
                               ],
@@ -415,7 +498,9 @@ class _SignupScreenState extends State<SignupScreen> with TickerProviderStateMix
                           ),
                         ),
                       ),
-                      Space(vertical: 24,),
+                      Space(
+                        vertical: 24,
+                      ),
                     ],
                   ),
                 ),

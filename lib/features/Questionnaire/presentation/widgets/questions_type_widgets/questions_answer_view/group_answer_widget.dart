@@ -1,11 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scrips_core/ui_helpers/app_colors.dart';
 import 'package:scrips_core/ui_helpers/text_styles.dart';
 import 'package:scrips_core/widgets/general/space.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:scrips_ua/features/Questionnaire/data/datamodels/questionnaire_model.dart' as questionnaire;
-import 'package:scrips_ua/features/Questionnaire/data/datamodels/questionnaire_response_model.dart' as questionnaireResponse;
+import 'package:scrips_ua/core/util/utils.dart';
+import 'package:scrips_ua/features/Questionnaire/data/datamodels/questionnaire_model.dart'
+    as questionnaire;
+import 'package:scrips_ua/features/Questionnaire/data/datamodels/questionnaire_response_model.dart'
+    as questionnaireResponse;
 import 'package:scrips_ua/features/Questionnaire/presentation/bloc/bloc.dart';
 import 'package:scrips_ua/features/Questionnaire/presentation/widgets/questions_type_widgets/common/answer_top_buttons_widget.dart';
 import 'package:scrips_ua/features/Questionnaire/presentation/widgets/questions_type_widgets/questions_answer_view/boolean_answer_widget.dart';
@@ -13,17 +16,15 @@ import 'package:scrips_ua/features/Questionnaire/presentation/widgets/questions_
 import 'package:scrips_ua/features/Questionnaire/presentation/widgets/questions_type_widgets/questions_answer_view/open_choice_answer_widget.dart';
 import 'package:scrips_ua/features/Questionnaire/presentation/widgets/questions_type_widgets/questions_answer_view/string_answer_widget.dart';
 
-
 class GroupAnswerWidget extends StatefulWidget {
-  GroupAnswerWidget(
-      {Key key,
-      this.showButtons = true,
-      this.questionItem,
-        this.answerItem,
-        this.bloc,
-        this.onChanged,
-      })
-      : super(key: key);
+  GroupAnswerWidget({
+    Key key,
+    this.showButtons = true,
+    this.questionItem,
+    this.answerItem,
+    this.bloc,
+    this.onChanged,
+  }) : super(key: key);
   final bool showButtons;
   final questionnaire.Item questionItem;
   final questionnaireResponse.Item answerItem;
@@ -46,14 +47,15 @@ class _GroupAnswerWidgetState extends State<GroupAnswerWidget> {
     super.initState();
   }
 
-  Widget questionWidgetItem(questionnaire.Item questionItem, questionnaireResponse.Item responseItem) {
+  Widget questionWidgetItem(questionnaire.Item questionItem,
+      questionnaireResponse.Item responseItem) {
     switch (questionItem.type) {
       case "String":
         return StringAnswerWidget(
           questionItem: questionItem,
           answerItem: responseItem,
           showButtons: false,
-          onChanged: (answer){
+          onChanged: (answer) {
             responseItem = answer;
             widget.onChanged(responseItem);
           },
@@ -68,7 +70,7 @@ class _GroupAnswerWidgetState extends State<GroupAnswerWidget> {
               showButtons: false,
               questionItem: questionItem,
               answerItem: responseItem,
-              onChanged: (answer){
+              onChanged: (answer) {
                 responseItem = answer;
                 widget.onChanged(responseItem);
               },
@@ -84,7 +86,7 @@ class _GroupAnswerWidgetState extends State<GroupAnswerWidget> {
               showButtons: false,
               questionItem: questionItem,
               answerItem: responseItem,
-              onChanged: (answer){
+              onChanged: (answer) {
                 responseItem = answer;
                 widget.onChanged(responseItem);
               },
@@ -100,7 +102,7 @@ class _GroupAnswerWidgetState extends State<GroupAnswerWidget> {
               showButtons: false,
               questionItem: questionItem,
               answerItem: responseItem,
-              onChanged: (answer){
+              onChanged: (answer) {
                 responseItem = answer;
                 widget.onChanged(responseItem);
               },
@@ -112,7 +114,7 @@ class _GroupAnswerWidgetState extends State<GroupAnswerWidget> {
         return GroupAnswerWidget(
           questionItem: questionItem,
           answerItem: responseItem,
-          onChanged: (answer){
+          onChanged: (answer) {
             responseItem = answer;
             widget.onChanged(responseItem);
           },
@@ -142,6 +144,8 @@ class _GroupAnswerWidgetState extends State<GroupAnswerWidget> {
                       ? Column(
                           children: <Widget>[
                             AnswerTopButtonsWidget(
+                              image:
+                                  groupIcon(widget?.questionItem?.groups?.name),
                               title:
                                   "${widget?.questionItem?.groups?.name ?? "N/A"}"
                                       .toUpperCase(),
@@ -181,7 +185,9 @@ class _GroupAnswerWidgetState extends State<GroupAnswerWidget> {
                               Space(
                                 vertical: 24,
                               ),
-                              questionWidgetItem(widget?.questionItem?.items[index], widget?.answerItem?.items[index]),
+                              questionWidgetItem(
+                                  widget?.questionItem?.items[index],
+                                  widget?.answerItem?.items[index]),
                             ],
                           );
                         }),

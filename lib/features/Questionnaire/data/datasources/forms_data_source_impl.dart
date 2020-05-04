@@ -24,13 +24,20 @@ class QuestionnaireDataSourceImpl extends QuestionnaireDataSource {
       '$practiceServer/api/Questionnaires/Questionnaire?PatientId=$pid',
     )
         .timeout(Duration(seconds: _timeout), onTimeout: () {
-      throw Exception('Cannot fetch questions');
+      throw Failure(
+          'Something bad happened in the background, please try after some time.');
     });
-    return questionnaireFromJson(utf8.decode(response.data));
+    try {
+      var result = questionnaireFromJson(utf8.decode(response.data));
+      return result;
+    } on TypeError {
+      throw Failure(
+          'Something bad happened in the background, please try after some time.');
+    }
   }
 
   @override
-  Future<Status> saveFormResponse({QuestionnaireResponse response}) async{
+  Future<Status> saveFormResponse({QuestionnaireResponse response}) async {
     client.options.responseType = ResponseType.bytes;
     client.options.headers = {
       'accept': 'text/plain',
@@ -42,10 +49,9 @@ class QuestionnaireDataSourceImpl extends QuestionnaireDataSource {
     var _ = await client
         .post('$endpoint/api/QuestionnaireResponses', data: requestBody)
         .timeout(Duration(seconds: _timeout), onTimeout: () {
-      throw Exception('Cannot update form');
+      throw Failure(
+          'Something bad happened in the background, please try after some time.');
     });
     return Success('Form Successfully Saved');
   }
-
-
 }

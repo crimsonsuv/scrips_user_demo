@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:scrips_core/ui_helpers/app_colors.dart';
 import 'package:scrips_core/ui_helpers/text_styles.dart';
 import 'package:scrips_core/widgets/general/space.dart';
+import 'package:scrips_ua/core/constants/app_assets.dart';
 
 class AnswerTopButtonsWidget extends StatefulWidget {
-  AnswerTopButtonsWidget({Key key, this.title = ""})
+  AnswerTopButtonsWidget({Key key, this.title = "", this.image})
       : super(key: key);
   final String title;
+  final String image;
 
   @override
   _AnswerTopButtonsWidgetState createState() => _AnswerTopButtonsWidgetState();
@@ -40,9 +42,7 @@ class _AnswerTopButtonsWidgetState extends State<AnswerTopButtonsWidget> {
               width: 32,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(6),
-                child: Container(
-                  color: labelTextStyleTextColor,
-                ),
+                child: Images.instance.asset(name: widget.image),
               ),
             ),
             Space(

@@ -4,19 +4,20 @@ import 'package:flutter_tags/flutter_tags.dart';
 import 'package:scrips_core/ui_helpers/app_colors.dart';
 import 'package:scrips_core/ui_helpers/text_styles.dart';
 import 'package:scrips_core/widgets/general/space.dart';
-import 'package:scrips_ua/features/Questionnaire/data/datamodels/questionnaire_model.dart' as questionnaire;
+import 'package:scrips_ua/core/util/utils.dart';
+import 'package:scrips_ua/features/Questionnaire/data/datamodels/questionnaire_model.dart'
+    as questionnaire;
+import 'package:scrips_ua/features/Questionnaire/data/datamodels/questionnaire_response_model.dart'
+    as questionnaireResponse;
 import 'package:scrips_ua/features/Questionnaire/presentation/widgets/questions_type_widgets/common/answer_top_buttons_widget.dart';
-import 'package:scrips_ua/features/Questionnaire/data/datamodels/questionnaire_response_model.dart' as questionnaireResponse;
-
-
 
 class BooleanAnswerWidget extends StatefulWidget {
   BooleanAnswerWidget(
       {Key key,
       this.showButtons = true,
       this.questionItem,
-        this.onChanged,
-        this.answerItem})
+      this.onChanged,
+      this.answerItem})
       : super(key: key);
   final bool showButtons;
   final questionnaire.Item questionItem;
@@ -55,6 +56,7 @@ class _BooleanAnswerWidgetState extends State<BooleanAnswerWidget> {
                   ? Column(
                       children: <Widget>[
                         AnswerTopButtonsWidget(
+                          image: groupIcon(widget?.questionItem?.groups?.name),
                           title:
                               "${widget?.questionItem?.groups?.name ?? "N/A"}"
                                   .toUpperCase(),
@@ -96,15 +98,17 @@ class _BooleanAnswerWidgetState extends State<BooleanAnswerWidget> {
                   return ItemTags(
                     index: index, // required
                     elevation: 0,
-                    padding: EdgeInsets.only(
-                        left: 20, right: 20, top: 7, bottom: 7),
+                    padding:
+                        EdgeInsets.only(left: 20, right: 20, top: 7, bottom: 7),
                     title: index == 0 ? "Yes" : "No",
                     textColor: regularTextColor,
                     textActiveColor: enabledBtnTextColor,
                     color: bgColor,
                     activeColor: enabledBtnBGColor,
                     border: Border.all(width: 0, color: Colors.transparent),
-                    active: index == 0 ?  (widget?.answerItem?.answer?.valueBoolean == true) : (widget?.answerItem?.answer?.valueBoolean == false),
+                    active: index == 0
+                        ? (widget?.answerItem?.answer?.valueBoolean == true)
+                        : (widget?.answerItem?.answer?.valueBoolean == false),
                     textStyle: normalLabelTextStyle(15, regularTextColor),
                     combine: ItemTagsCombine.withTextBefore, // OR null,
                     onPressed: (item) {

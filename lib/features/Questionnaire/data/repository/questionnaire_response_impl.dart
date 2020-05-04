@@ -8,7 +8,6 @@ import 'package:scrips_ua/features/Questionnaire/data/datamodels/questionnaire_r
 import 'package:scrips_ua/features/Questionnaire/data/datasources/forms_data_source.dart';
 import 'package:scrips_ua/features/Questionnaire/domain/repository/questionnaire_repository.dart';
 
-
 class QuestionnaireRepositoryImpl extends QuestionnaireRepository {
   QuestionnaireDataSource questionnaireDataSource;
 
@@ -24,21 +23,22 @@ class QuestionnaireRepositoryImpl extends QuestionnaireRepository {
         return Right(Questionnaire(items: []));
       }
       return (Left(handleFailure(e)));
-    } on Failure {
-      return Left(Failure("Request time out.."));
+    } on Failure catch (e) {
+      return Left(Failure(e.message));
     }
   }
 
   @override
-  Future<Either<Failure, Success>> saveFormResponse({QuestionnaireResponse response}) async {
+  Future<Either<Failure, Success>> saveFormResponse(
+      {QuestionnaireResponse response}) async {
     try {
-      final result = await questionnaireDataSource.saveFormResponse(response: response);
+      final result =
+          await questionnaireDataSource.saveFormResponse(response: response);
       return Right(result);
     } on DioError catch (e) {
       return (Left(handleFailure(e)));
-    } on Failure {
-      return Left(Failure("Request time out.."));
+    } on Failure catch (e) {
+      return Left(Failure(e.message));
     }
   }
-
 }

@@ -4,17 +4,20 @@ import 'package:scrips_core/ui_helpers/app_colors.dart';
 import 'package:scrips_core/ui_helpers/text_styles.dart';
 import 'package:scrips_core/widgets/general/field_and_label.dart';
 import 'package:scrips_core/widgets/general/space.dart';
-import 'package:scrips_ua/features/Questionnaire/data/datamodels/questionnaire_model.dart' as questionnaire;
+import 'package:scrips_ua/core/util/utils.dart';
+import 'package:scrips_ua/features/Questionnaire/data/datamodels/questionnaire_model.dart'
+    as questionnaire;
+import 'package:scrips_ua/features/Questionnaire/data/datamodels/questionnaire_response_model.dart'
+    as questionnaireResponse;
 import 'package:scrips_ua/features/Questionnaire/presentation/widgets/questions_type_widgets/common/answer_top_buttons_widget.dart';
-import 'package:scrips_ua/features/Questionnaire/data/datamodels/questionnaire_response_model.dart' as questionnaireResponse;
 
 class StringAnswerWidget extends StatefulWidget {
   StringAnswerWidget(
       {Key key,
       this.showButtons = true,
       this.questionItem,
-        this.onChanged,
-        this.answerItem})
+      this.onChanged,
+      this.answerItem})
       : super(key: key);
   final bool showButtons;
   final Function onChanged;
@@ -53,6 +56,7 @@ class _StringAnswerWidgetState extends State<StringAnswerWidget> {
                   ? Column(
                       children: <Widget>[
                         AnswerTopButtonsWidget(
+                          image: groupIcon(widget?.questionItem?.groups?.name),
                           title:
                               "${widget?.questionItem?.groups?.name ?? "N/A"}"
                                   .toUpperCase(),
