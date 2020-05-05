@@ -105,6 +105,7 @@ class _SearchResourceWidgetState extends State<SearchResourceWidget> {
                                   Positioned.fill(
                                     child: CupertinoTypeAheadFormField(
                                       hideOnEmpty: true,
+                                      hideSuggestionsOnKeyboardHide: false,
                                       keepSuggestionsOnLoading: false,
                                       suggestionsBoxVerticalOffset: 10,
                                       debounceDuration:
@@ -138,7 +139,7 @@ class _SearchResourceWidgetState extends State<SearchResourceWidget> {
                                               decoration: BoxDecoration(
                                                 color: searchBGColour,
                                                 borderRadius:
-                                                    BorderRadius.circular(13),
+                                                    BorderRadius.circular(10),
                                               ),
                                               placeholder:
                                                   "Search ${widget.groupName}",
