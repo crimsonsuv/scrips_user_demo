@@ -232,12 +232,14 @@ class Groups {
   String name;
   String url;
   String icon;
+  bool isSearchable;
 
   Groups({
     this.id,
     this.name,
     this.url,
     this.icon,
+    this.isSearchable,
   });
 
   factory Groups.fromJson(Map<String, dynamic> json) => Groups(
@@ -245,6 +247,8 @@ class Groups {
         name: json["name"] == null ? null : json["name"],
         url: json["url"] == null ? null : json["url"],
         icon: json["icon"] == null ? null : json["icon"],
+        isSearchable:
+            json["isSearchable"] == null ? null : json["isSearchable"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -252,6 +256,7 @@ class Groups {
         "name": name == null ? null : name,
         "url": url == null ? null : url,
         "icon": icon == null ? null : icon,
+        "isSearchable": isSearchable == null ? null : isSearchable,
       };
 }
 

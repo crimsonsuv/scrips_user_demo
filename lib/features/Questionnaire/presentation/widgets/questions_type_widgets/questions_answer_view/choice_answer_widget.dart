@@ -143,42 +143,45 @@ class _ChoiceAnswerWidgetState extends State<ChoiceAnswerWidget> {
             ],
           ),
         ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Space(
-              vertical: 10,
-            ),
-            Container(
-              height: 1,
-              color: separatorColor,
-            ),
-            Container(
-              height: 64,
-              child: Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      "Not on the list?",
-                      style:
-                          semiBoldLabelTextStyle(15, labelTextStyleTextColor),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        widget.onSearch();
-                      },
-                      child: Text(
-                        " Search ${widget?.questionItem?.groups?.name ?? ""}",
-                        style: semiBoldLabelTextStyle(15, enabledBtnBGColor),
+        (widget?.questionItem?.groups?.isSearchable ?? false)
+            ? Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Space(
+                    vertical: 10,
+                  ),
+                  Container(
+                    height: 1,
+                    color: separatorColor,
+                  ),
+                  Container(
+                    height: 64,
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            "Not on the list?",
+                            style: semiBoldLabelTextStyle(
+                                15, labelTextStyleTextColor),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              widget.onSearch();
+                            },
+                            child: Text(
+                              " Search ${widget?.questionItem?.groups?.name ?? ""}",
+                              style:
+                                  semiBoldLabelTextStyle(15, enabledBtnBGColor),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
-              ),
-            )
-          ],
-        ),
+                  )
+                ],
+              )
+            : Container(),
       ]),
     );
   }
