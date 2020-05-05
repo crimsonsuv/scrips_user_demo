@@ -4,7 +4,7 @@ import 'package:scrips_core/ui_helpers/app_colors.dart';
 import 'package:scrips_core/ui_helpers/text_styles.dart';
 import 'package:scrips_core/widgets/general/field_and_label.dart';
 import 'package:scrips_core/widgets/general/space.dart';
-import 'package:scrips_ua/core/util/utils.dart';
+import 'package:scrips_ua/core/constants/api_constats.dart';
 import 'package:scrips_ua/features/Questionnaire/data/datamodels/questionnaire_model.dart'
     as questionnaire;
 import 'package:scrips_ua/features/Questionnaire/data/datamodels/questionnaire_response_model.dart'
@@ -56,7 +56,8 @@ class _StringAnswerWidgetState extends State<StringAnswerWidget> {
                   ? Column(
                       children: <Widget>[
                         AnswerTopButtonsWidget(
-                          image: groupIcon(widget?.questionItem?.groups?.name),
+                          image: Image.network(
+                              "$questionBankServer/${widget?.questionItem?.groups?.icon ?? ""}"),
                           title:
                               "${widget?.questionItem?.groups?.name ?? "N/A"}"
                                   .toUpperCase(),

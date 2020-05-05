@@ -231,23 +231,27 @@ class Groups {
   String id;
   String name;
   String url;
+  String icon;
 
   Groups({
     this.id,
     this.name,
     this.url,
+    this.icon,
   });
 
   factory Groups.fromJson(Map<String, dynamic> json) => Groups(
         id: json["id"] == null ? null : json["id"],
         name: json["name"] == null ? null : json["name"],
         url: json["url"] == null ? null : json["url"],
+        icon: json["icon"] == null ? null : json["icon"],
       );
 
   Map<String, dynamic> toJson() => {
         "id": id == null ? null : id,
         "name": name == null ? null : name,
         "url": url == null ? null : url,
+        "icon": icon == null ? null : icon,
       };
 }
 
