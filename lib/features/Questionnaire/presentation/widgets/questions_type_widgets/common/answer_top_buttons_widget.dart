@@ -36,13 +36,10 @@ class _AnswerTopButtonsWidgetState extends State<AnswerTopButtonsWidget> {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            SizedBox(
-              height: 32,
-              width: 32,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(6),
-                child: widget.image,
-              ),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(6),
+              child: Container(
+                  color: bgColor, height: 32, width: 32, child: widget.image),
             ),
             Space(
               horizontal: 16,
