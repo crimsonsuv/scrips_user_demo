@@ -260,7 +260,7 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
                           } else {
                             bloc.dispatch(ShowErrorMessageEvent(
                                 message:
-                                    "Please provide response to all the madatory fields"));
+                                    "Please provide response to all the mandatory fields"));
                           }
                         },
                         child: Container(
