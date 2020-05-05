@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:flutter_typeahead/cupertino_flutter_typeahead.dart';
 import 'package:scrips_core/common/domain/usecases/fetch_value_sets_use_case.dart';
 import 'package:scrips_core/ui_helpers/app_colors.dart';
 import 'package:scrips_core/ui_helpers/text_styles.dart';
@@ -92,10 +92,6 @@ class _SearchResourceWidgetState extends State<SearchResourceWidget> {
                     padding: EdgeInsets.only(right: 16, left: 16, top: 10),
                     child: Container(
                       height: 36.0,
-                      decoration: BoxDecoration(
-                        color: searchBGColour,
-                        borderRadius: BorderRadius.circular(13),
-                      ),
                       constraints: BoxConstraints.expand(height: 36),
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 6),
@@ -107,7 +103,7 @@ class _SearchResourceWidgetState extends State<SearchResourceWidget> {
                               child: Stack(
                                 children: <Widget>[
                                   Positioned.fill(
-                                    child: TypeAheadField(
+                                    child: CupertinoTypeAheadFormField(
                                       hideOnEmpty: true,
                                       keepSuggestionsOnLoading: false,
                                       suggestionsBoxVerticalOffset: 10,
@@ -132,21 +128,20 @@ class _SearchResourceWidgetState extends State<SearchResourceWidget> {
                                         );
                                       },
                                       textFieldConfiguration:
-                                          TextFieldConfiguration(
+                                          CupertinoTextFieldConfiguration(
+                                              padding:
+                                                  EdgeInsets.only(left: 30),
                                               autofocus: true,
                                               style: normalLabelTextStyle(
                                                   15, regularTextColor),
                                               controller: textEditingController,
-                                              decoration: InputDecoration(
-                                                counterText: "",
-                                                contentPadding: EdgeInsets.only(
-                                                    bottom: 12, left: 26),
-                                                hintText:
-                                                    "Search ${widget.groupName}",
-                                                hintStyle: defaultHintStyle(
-                                                    null, null),
-                                                border: InputBorder.none,
+                                              decoration: BoxDecoration(
+                                                color: searchBGColour,
+                                                borderRadius:
+                                                    BorderRadius.circular(13),
                                               ),
+                                              placeholder:
+                                                  "Search ${widget.groupName}",
                                               onChanged: (value) {}),
                                       suggestionsCallback: (pattern) async {
                                         final result =
@@ -163,13 +158,15 @@ class _SearchResourceWidgetState extends State<SearchResourceWidget> {
                                       },
                                       itemBuilder: (context, prediction) {
                                         return Listener(
-                                          child: ListTile(
-                                            title: Text(
-                                              prediction
-                                                      ?.valueCoding?.display ??
-                                                  "n/a",
-                                              style: normalLabelTextStyle(
-                                                  15, regularTextColor),
+                                          child: Material(
+                                            child: ListTile(
+                                              title: Text(
+                                                prediction?.valueCoding
+                                                        ?.display ??
+                                                    "n/a",
+                                                style: normalLabelTextStyle(
+                                                    15, regularTextColor),
+                                              ),
                                             ),
                                           ),
                                           onPointerDown: (_) => null,
@@ -182,7 +179,7 @@ class _SearchResourceWidgetState extends State<SearchResourceWidget> {
                                     ),
                                   ),
                                   Positioned(
-                                    left: 0,
+                                    left: 4,
                                     top: 0,
                                     bottom: 0,
                                     child: Row(

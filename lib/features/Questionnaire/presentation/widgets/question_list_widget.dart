@@ -47,6 +47,7 @@ class _QuestionListWidgetState extends State<QuestionListWidget>
     showModalBottomSheetApp(
         bottomInset: 280,
         context: context,
+        resizeToAvoidBottomPadding: false,
         builder: (builder) {
           return SearchResourceWidget(
             onSelected: (value) {
