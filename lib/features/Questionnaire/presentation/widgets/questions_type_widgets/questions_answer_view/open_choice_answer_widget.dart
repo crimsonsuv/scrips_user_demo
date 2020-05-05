@@ -17,17 +17,20 @@ class OpenChoiceAnswerWidget extends StatefulWidget {
     this.questionItem,
     this.answerItem,
     this.onChanged,
+    this.onSearch,
   }) : super(key: key);
   final bool showButtons;
   final questionnaire.Item questionItem;
   final questionnaireResponse.Item answerItem;
   final Function onChanged;
+  final Function onSearch;
 
   @override
   _OpenChoiceAnswerWidgetState createState() => _OpenChoiceAnswerWidgetState();
 }
 
 class _OpenChoiceAnswerWidgetState extends State<OpenChoiceAnswerWidget> {
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   void dispose() async {
     super.dispose();
@@ -229,9 +232,14 @@ class _OpenChoiceAnswerWidgetState extends State<OpenChoiceAnswerWidget> {
                       style:
                           semiBoldLabelTextStyle(15, labelTextStyleTextColor),
                     ),
-                    Text(
-                      " Search ${widget?.questionItem?.groups?.name ?? ""}",
-                      style: semiBoldLabelTextStyle(15, enabledBtnBGColor),
+                    InkWell(
+                      onTap: () {
+                        widget.onSearch();
+                      },
+                      child: Text(
+                        " Search ${widget?.questionItem?.groups?.name ?? ""}",
+                        style: semiBoldLabelTextStyle(15, enabledBtnBGColor),
+                      ),
                     ),
                   ],
                 ),

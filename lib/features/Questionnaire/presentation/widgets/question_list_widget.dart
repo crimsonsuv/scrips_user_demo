@@ -3,11 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scrips_core/ui_helpers/app_colors.dart';
 import 'package:scrips_core/ui_helpers/text_styles.dart';
-import 'package:scrips_ua/features/Questionnaire/data/datamodels/questionnaire_model.dart' as Questionnaire;
-import 'package:scrips_ua/features/Questionnaire/data/datamodels/questionnaire_response_model.dart' as QuestionnaireResponse;
+import 'package:scrips_core/widgets/general/custom_bottom_sheet.dart';
+import 'package:scrips_ua/features/Questionnaire/data/datamodels/questionnaire_model.dart'
+    as Questionnaire;
+import 'package:scrips_ua/features/Questionnaire/data/datamodels/questionnaire_response_model.dart'
+    as QuestionnaireResponse;
 import 'package:scrips_ua/features/Questionnaire/presentation/bloc/questionnaire_bloc.dart';
 import 'package:scrips_ua/features/Questionnaire/presentation/bloc/questionnaire_event.dart';
 import 'package:scrips_ua/features/Questionnaire/presentation/bloc/questionnaire_state.dart';
+import 'package:scrips_ua/features/Questionnaire/presentation/widgets/questions_type_widgets/common/search_popup_widget.dart';
 import 'package:scrips_ua/features/Questionnaire/presentation/widgets/questions_type_widgets/questions_answer_view/boolean_answer_widget.dart';
 import 'package:scrips_ua/features/Questionnaire/presentation/widgets/questions_type_widgets/questions_answer_view/choice_answer_widget.dart';
 import 'package:scrips_ua/features/Questionnaire/presentation/widgets/questions_type_widgets/questions_answer_view/group_answer_widget.dart';
@@ -15,7 +19,8 @@ import 'package:scrips_ua/features/Questionnaire/presentation/widgets/questions_
 import 'package:scrips_ua/features/Questionnaire/presentation/widgets/questions_type_widgets/questions_answer_view/string_answer_widget.dart';
 
 class QuestionListWidget extends StatefulWidget {
-  QuestionListWidget({Key key, this.formData, this.bloc, this.response}) : super(key: key);
+  QuestionListWidget({Key key, this.formData, this.bloc, this.response})
+      : super(key: key);
   final Questionnaire.Questionnaire formData;
   final QuestionnaireResponse.QuestionnaireResponse response;
   final QuestionnaireBloc bloc;
@@ -26,6 +31,7 @@ class QuestionListWidget extends StatefulWidget {
 
 class _QuestionListWidgetState extends State<QuestionListWidget>
     with TickerProviderStateMixin {
+  SearchResourceWidget searchResourceWidget;
   @override
   void dispose() async {
     super.dispose();
@@ -37,17 +43,77 @@ class _QuestionListWidgetState extends State<QuestionListWidget>
     super.initState();
   }
 
-  Widget questionWidgetItem(Questionnaire.Item questionItem, QuestionnaireResponse.Item responseItem,  int index) {
+  void openSearchWidget(questionItem, responseItem, String groupType) {
+    showModalBottomSheetApp(
+        bottomInset: 280,
+        context: context,
+        builder: (builder) {
+          return SearchResourceWidget(
+            onSelected: (value) {
+              if (groupType == "Choice") {
+                if (((responseItem?.answer?.valueCoding
+                            ?.where((element) =>
+                                element.code ==
+                                questionItem
+                                    ?.answerOptions?.last?.valueCoding?.code)
+                            ?.toList()
+                            ?.length ??
+                        0) >
+                    0)) {
+                  responseItem.answer.valueCoding.removeWhere((element) =>
+                      element.code ==
+                      questionItem?.answerOptions?.last?.valueCoding?.code);
+                } else {
+                  responseItem.answer.valueCoding.add(
+                      QuestionnaireResponse.ValueCoding(
+                          code: questionItem
+                              ?.answerOptions?.last?.valueCoding?.code,
+                          display:
+                              questionItem?.answerOptions?.valueCoding?.display,
+                          system: questionItem
+                              ?.answerOptions?.valueCoding?.system));
+                }
+              } else {
+                Questionnaire.AnswerOption option =
+                    Questionnaire.AnswerOption.fromJson(value.toJson());
+                if (questionItem.answerOptions
+                        .where((data) =>
+                            data.valueCoding.code == option.valueCoding.code)
+                        .toList()
+                        .length ==
+                    0) {
+                  questionItem.answerOptions.add(option);
+                }
+                responseItem.answer.valueCoding.add(
+                    QuestionnaireResponse.ValueCoding(
+                        code: questionItem
+                            ?.answerOptions?.last?.valueCoding?.code,
+                        display: questionItem
+                            ?.answerOptions?.last?.valueCoding?.display,
+                        system: questionItem
+                            ?.answerOptions?.last?.valueCoding?.system));
+              }
+              widget.bloc
+                  .dispatch(EnableSaveButtonEvent(response: widget.response));
+            },
+            groupName: questionItem.groups.name,
+          );
+        });
+  }
+
+  Widget questionWidgetItem(Questionnaire.Item questionItem,
+      QuestionnaireResponse.Item responseItem, int index) {
     switch (questionItem.type) {
       case "String":
-          return StringAnswerWidget(
-            questionItem: questionItem,
-            answerItem: responseItem,
-            onChanged: (answer){
-              responseItem = answer;
-              widget.bloc.dispatch(EnableSaveButtonEvent(response: widget.response));
-            },
-          );
+        return StringAnswerWidget(
+          questionItem: questionItem,
+          answerItem: responseItem,
+          onChanged: (answer) {
+            responseItem = answer;
+            widget.bloc
+                .dispatch(EnableSaveButtonEvent(response: widget.response));
+          },
+        );
 
         break;
       case "Boolean":
@@ -57,9 +123,10 @@ class _QuestionListWidgetState extends State<QuestionListWidget>
             return BooleanAnswerWidget(
               questionItem: questionItem,
               answerItem: responseItem,
-              onChanged: (answer){
+              onChanged: (answer) {
                 responseItem = answer;
-                widget.bloc.dispatch(EnableSaveButtonEvent(response: widget.response));
+                widget.bloc
+                    .dispatch(EnableSaveButtonEvent(response: widget.response));
               },
             );
           },
@@ -72,9 +139,14 @@ class _QuestionListWidgetState extends State<QuestionListWidget>
             return ChoiceAnswerWidget(
               questionItem: questionItem,
               answerItem: responseItem,
-              onChanged: (answer){
+              onChanged: (answer) {
                 responseItem = answer;
-                widget.bloc.dispatch(EnableSaveButtonEvent(response: widget.response));
+                widget.bloc
+                    .dispatch(EnableSaveButtonEvent(response: widget.response));
+              },
+              onSearch: () {
+                openSearchWidget(questionItem, responseItem,
+                    questionItem.questionType.title);
               },
             );
           },
@@ -83,39 +155,46 @@ class _QuestionListWidgetState extends State<QuestionListWidget>
       case "OpenChoice":
         return BlocBuilder<QuestionnaireBloc, QuestionnaireState>(
           bloc: widget.bloc,
-          builder: (context, state) {
+          builder: (BuildContext context, state) {
             return OpenChoiceAnswerWidget(
               questionItem: questionItem,
               answerItem: responseItem,
-              onChanged: (answer){
+              onChanged: (answer) {
                 responseItem = answer;
-                widget.bloc.dispatch(EnableSaveButtonEvent(response: widget.response));
+                widget.bloc
+                    .dispatch(EnableSaveButtonEvent(response: widget.response));
+              },
+              onSearch: () {
+                openSearchWidget(questionItem, responseItem,
+                    questionItem.questionType.title);
               },
             );
           },
         );
         break;
       case "Group":
-          return GroupAnswerWidget(
-            questionItem: questionItem,
-            answerItem: responseItem,
-            bloc: widget.bloc,
-            onChanged: (answer){
-              responseItem = answer;
-              widget.bloc.dispatch(EnableSaveButtonEvent(response: widget.response));
-            },
-          );
+        return GroupAnswerWidget(
+          questionItem: questionItem,
+          answerItem: responseItem,
+          bloc: widget.bloc,
+          onChanged: (answer) {
+            responseItem = answer;
+            widget.bloc
+                .dispatch(EnableSaveButtonEvent(response: widget.response));
+          },
+        );
         break;
       default:
         return Text('Un-identified question type', textScaleFactor: 2);
     }
+    return Text('Un-identified question type', textScaleFactor: 2);
   }
 
   @override
   Widget build(BuildContext context) {
     return ((widget?.formData?.items?.length ?? 0) == 0)
         ? Container(
-      height: 100,
+            height: 100,
             child: Center(
               child: Text(
                 "No Questions Added",
@@ -126,16 +205,17 @@ class _QuestionListWidgetState extends State<QuestionListWidget>
         : SizedBox.fromSize(
             child: BlocBuilder<QuestionnaireBloc, QuestionnaireState>(
               bloc: widget.bloc,
-              condition: (currState, oldState){
-                if(currState is EnableSaveButtonState){
+              condition: (currState, oldState) {
+                if (currState is EnableSaveButtonState) {
                   return false;
                 }
                 return true;
               },
-              builder: (context, state) {
+              builder: (BuildContext context, state) {
                 return ListView.builder(
                     padding: const EdgeInsets.all(8),
                     shrinkWrap: true,
+                    // addAutomaticKeepAlives: true,
                     physics: NeverScrollableScrollPhysics(),
                     itemCount: widget?.formData?.items?.length ?? 0,
                     itemBuilder: (BuildContext context, int index) {
@@ -148,12 +228,14 @@ class _QuestionListWidgetState extends State<QuestionListWidget>
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 6, vertical: 8),
-                            child: questionWidgetItem(widget?.formData?.items[index], widget?.response?.items[index], index),
+                            child: questionWidgetItem(
+                                widget?.formData?.items[index],
+                                widget?.response?.items[index],
+                                index),
                           ),
                         ),
                       );
-                    }
-                );
+                    });
               },
             ),
           );

@@ -7,9 +7,8 @@ import 'package:scrips_core/widgets/general/toast_widget.dart';
 import 'package:scrips_ua/core/constants/app_assets.dart';
 import 'package:scrips_ua/di/dependency_injection.dart';
 import 'package:scrips_ua/features/landing/presentation/bloc/landing/landing_bloc.dart';
-import 'package:scrips_ua/features/landing/presentation/widgets/header_widgets.dart';
 import 'package:scrips_ua/features/landing/presentation/widgets/footer_widgets.dart';
-
+import 'package:scrips_ua/features/landing/presentation/widgets/header_widgets.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({
@@ -48,8 +47,6 @@ class _LandingScreenState extends State<LandingScreen> {
 //    }
 //  }
 
-
-
   @override
   Widget build(BuildContext context) {
     return OKToast(
@@ -80,7 +77,8 @@ class _LandingScreenState extends State<LandingScreen> {
                 return Scaffold(
                   backgroundColor: bgColor,
                   body: Padding(
-                    padding: const EdgeInsets.only(top: 180),
+                    padding: EdgeInsets.only(
+                        top: MediaQuery.of(context).size.height * 0.25),
                     child: SimpleView(
                       showBackButton: false,
                       showAppIcon: true,
@@ -89,9 +87,7 @@ class _LandingScreenState extends State<LandingScreen> {
                       headerWidgets: headerWidgets(context: context),
                       bodyWidgets: [Container()],
                       footerWidgets: footerWidgets(
-                          context: context,
-                          bloc: bloc,
-                          isLoading: isLoading),
+                          context: context, bloc: bloc, isLoading: isLoading),
                     ),
                   ),
                 );

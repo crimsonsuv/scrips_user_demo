@@ -20,27 +20,25 @@ class Router {
       case AppRoutePaths.SignUp:
         return MaterialPageRoute(
             builder: (_) => SignupBaseScreen(
-              key: ObjectKey(settings.name),
-              // next: homeView(settings),
-            ),
+                  key: ObjectKey(settings.name),
+                  // next: homeView(settings),
+                ),
             settings: RouteSettings(name: settings.name));
         break;
       case AppRoutePaths.PatientList:
         return MaterialPageRoute(
             builder: (_) => PatientListBaseScreen(
-              key: ObjectKey(settings.name),
-                patientList: settings.arguments
-              // next: homeView(settings),
-            ),
+                key: ObjectKey(settings.name), patientList: settings.arguments
+                // next: homeView(settings),
+                ),
             settings: RouteSettings(name: settings.name));
         break;
       case AppRoutePaths.Questionnaire:
         return MaterialPageRoute(
             builder: (_) => QuestionnaireBaseScreen(
-                key: ObjectKey(settings.name),
-                patientId: settings.arguments
-              // next: homeView(settings),
-            ),
+                key: ObjectKey(settings.name), patientId: settings.arguments
+                // next: homeView(settings),
+                ),
             settings: RouteSettings(name: settings.name));
         break;
     }

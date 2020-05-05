@@ -6,14 +6,11 @@ import 'package:scrips_core/widgets/general/space.dart';
 import 'package:scrips_ua/core/route/app_route_paths.dart';
 import 'package:scrips_ua/features/landing/presentation/bloc/landing/landing_bloc.dart';
 
-
 List<Widget> footerWidgets(
-        {BuildContext context,
-        LandingBloc bloc,
-        bool isLoading}) =>
+        {BuildContext context, LandingBloc bloc, bool isLoading}) =>
     <Widget>[
       Space(
-        vertical: 97,
+        vertical: MediaQuery.of(context).size.height * 0.1,
       ),
       Button(
         height: 48,
@@ -32,11 +29,11 @@ List<Widget> footerWidgets(
         vertical: 18,
       ),
       Button(
-              height: 48,
-              width: 222,
-              text: "Log In",
-              style: semiBoldLabelTextStyle(17, enabledBtnBGColor),
-              buttonBackgroundColor: textFieldBGcolor,
-              onPressed: (){},
-            ),
+        height: 48,
+        width: 222,
+        text: "Log In",
+        style: semiBoldLabelTextStyle(17, enabledBtnBGColor),
+        buttonBackgroundColor: textFieldBGcolor,
+        onPressed: () {},
+      ),
     ];

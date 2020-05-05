@@ -80,12 +80,12 @@ class _SignupScreenState extends State<SignupScreen>
               patientList = state.patients;
               if (patientList.length == 1) {
                 Future.delayed(Duration(milliseconds: 100), () {
-                  Navigator.pushNamed(context, AppRoutePaths.Questionnaire,
+                  Navigator.pushNamed(this.context, AppRoutePaths.Questionnaire,
                       arguments: patientList.first.patientId);
                 });
               } else {
                 Future.delayed(Duration(milliseconds: 100), () {
-                  Navigator.pushNamed(context, AppRoutePaths.PatientList,
+                  Navigator.pushNamed(this.context, AppRoutePaths.PatientList,
                       arguments: patientList);
                 });
               }

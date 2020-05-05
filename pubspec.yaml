@@ -47,6 +47,7 @@ dependencies:
   validators: ^2.0.0
   flutter_launcher_icons: ^0.7.3
   flutter_launcher_name: ^0.0.1
+  flutter_typeahead:
 
 dev_dependencies:
   flutter_test:

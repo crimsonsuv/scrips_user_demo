@@ -17,12 +17,14 @@ class ChoiceAnswerWidget extends StatefulWidget {
       this.showButtons = true,
       this.questionItem,
       this.onChanged,
+      this.onSearch,
       this.answerItem})
       : super(key: key);
   final bool showButtons;
   final questionnaire.Item questionItem;
   final questionnaireResponse.Item answerItem;
   final Function onChanged;
+  final Function onSearch;
 
   @override
   _ChoiceAnswerWidgetState createState() => _ChoiceAnswerWidgetState();
@@ -161,9 +163,14 @@ class _ChoiceAnswerWidgetState extends State<ChoiceAnswerWidget> {
                       style:
                           semiBoldLabelTextStyle(15, labelTextStyleTextColor),
                     ),
-                    Text(
-                      " Search ${widget?.questionItem?.groups?.name ?? ""}",
-                      style: semiBoldLabelTextStyle(15, enabledBtnBGColor),
+                    InkWell(
+                      onTap: () {
+                        widget.onSearch();
+                      },
+                      child: Text(
+                        " Search ${widget?.questionItem?.groups?.name ?? ""}",
+                        style: semiBoldLabelTextStyle(15, enabledBtnBGColor),
+                      ),
                     ),
                   ],
                 ),
