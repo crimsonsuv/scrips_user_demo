@@ -4,9 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:scrips_core/ui_helpers/app_colors.dart';
 import 'package:scrips_core/ui_helpers/text_styles.dart';
+import 'package:scrips_core/utils/utils.dart';
 import 'package:scrips_core/widgets/general/space.dart';
 import 'package:scrips_core/widgets/general/toast_widget.dart';
 import 'package:scrips_ua/core/constants/app_assets.dart';
+import 'package:scrips_ua/core/util/utils.dart';
 import 'package:scrips_ua/di/dependency_injection.dart';
 import 'package:scrips_ua/features/Questionnaire/data/datamodels/questionnaire_model.dart';
 import 'package:scrips_ua/features/Questionnaire/data/datamodels/questionnaire_response_model.dart'
@@ -167,8 +169,99 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
                     actions: <Widget>[
                       InkWell(
                         onTap: () {
-                          bloc.dispatch(
-                              SaveFormResponseDataEvent(response: response));
+                          bool completionStatus = true;
+                          formData.items.forEach((value) {
+                            if (value.required) {
+                              QuestionnaireResponse.Item resItem = response
+                                  ?.items
+                                  ?.where((res) => res.questionId == value.id)
+                                  ?.toList()
+                                  ?.elementAt(0);
+                              if (resItem == null) {
+                                completionStatus = false;
+                              }
+                              if (resItem.type == stringQType) {
+                                if (isBlank(resItem.answer.valueString)) {
+                                  completionStatus = false;
+                                }
+                              }
+                              if (resItem.type == booleanQType) {
+                                if (resItem.answer.valueBoolean == null) {
+                                  completionStatus = false;
+                                }
+                              }
+                              if (resItem.type == choiceQType) {
+                                if ((resItem?.answer?.valueCoding?.length ??
+                                        0) ==
+                                    0) {
+                                  completionStatus = false;
+                                }
+                              }
+                              if ((resItem?.answer?.valueCoding?.length ?? 0) ==
+                                  0) {
+                                if (isBlank(resItem.answer.valueString)) {
+                                  completionStatus = false;
+                                }
+                              }
+                              if (resItem.type == groupQType) {
+                                value.items.forEach((subValue) {
+                                  if (subValue.required) {
+                                    QuestionnaireResponse.Item subResItem =
+                                        resItem?.items
+                                            ?.where((res) =>
+                                                res.questionId == subValue.id)
+                                            ?.toList()
+                                            ?.elementAt(0);
+                                    if (subResItem == null) {
+                                      completionStatus = false;
+                                    }
+                                    if (subResItem.type == stringQType) {
+                                      if (isBlank(
+                                          subResItem.answer.valueString)) {
+                                        completionStatus = false;
+                                      }
+                                    }
+                                    if (subResItem.type == booleanQType) {
+                                      if (subResItem.answer.valueBoolean ==
+                                          null) {
+                                        completionStatus = false;
+                                      }
+                                    }
+                                    if (subResItem.type == choiceQType) {
+                                      if ((subResItem?.answer?.valueCoding
+                                                  ?.length ??
+                                              0) ==
+                                          0) {
+                                        completionStatus = false;
+                                      }
+                                    }
+                                    if ((subResItem
+                                                ?.answer?.valueCoding?.length ??
+                                            0) ==
+                                        0) {
+                                      if (isBlank(resItem.answer.valueString)) {
+                                        completionStatus = false;
+                                      }
+                                    }
+                                    if (subResItem.type == groupQType) {
+                                      if (isBlank(
+                                          subResItem.answer.valueString)) {
+                                        completionStatus = false;
+                                      }
+                                    }
+                                  }
+                                });
+                              }
+                            }
+                          });
+                          if (completionStatus) {
+                            bloc.dispatch(
+                                SaveFormResponseDataEvent(response: response));
+                          } else {
+                            bloc.dispatch(ShowErrorMessageEvent(
+                                message:
+                                    "Please provide response to all the madatory fields"));
+                          }
                         },
                         child: Container(
                             child: Padding(

@@ -44,3 +44,9 @@ String groupIcon(String name) {
       return "ic_patient";
   }
 }
+
+const stringQType = "String";
+const booleanQType = "Boolean";
+const choiceQType = "Choice";
+const openChoiceQType = "OpenChoice";
+const groupQType = "Group";
