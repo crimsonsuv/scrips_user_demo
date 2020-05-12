@@ -10,7 +10,6 @@ import 'package:scrips_core/locator.dart';
 import 'package:scrips_shared_features/di/dependency_injection.dart';
 import 'package:scrips_shared_features/generated/l10n.dart' as sharedL10n;
 import 'package:scrips_ua/core/bloc/core_bloc.dart';
-import 'package:scrips_ua/core/constants/app_config.dart';
 import 'package:scrips_ua/core/route/app_route_paths.dart';
 import 'package:scrips_ua/core/route/router.dart';
 import 'package:scrips_ua/di/dependency_injection.dart';
@@ -19,8 +18,6 @@ import 'package:scrips_ua/generated/l10n.dart';
 setUpAll() async {
   setupLocator();
   locator.allowReassignment = true;
-
-  await Configuration.loadConfig();
 
   initCoreServiceLocator();
 
@@ -110,7 +107,7 @@ class _MyAppState extends State<MyApp> with AfterInitMixin<MyApp> {
 //                ),
                 //  navigation
                 navigatorKey:
-                GlobalKey<NavigatorState>(debugLabel: 'main-navigator-key'),
+                    GlobalKey<NavigatorState>(debugLabel: 'main-navigator-key'),
                 builder: (BuildContext context, Widget child) {
                   setCurrentAppType(context, S.of(context), AppType.UA);
                   return DevicePreview.appBuilder(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:scrips_ua/core/base/screens/base_screen_view.dart';
+import 'package:scrips_core/base/screens/base_screen_view.dart';
 
 import 'signup_screen.dart';
 
@@ -17,7 +17,9 @@ class _SignupBaseScreenState extends State<SignupBaseScreen> {
   Widget build(BuildContext context) {
     return BaseScreenView(
       mobileBodyPortrait: SignupScreen(),
-      desktopBodyLandscape: Container(child: Center(child: Text("Not Supported")),),
+      desktopBodyLandscape: Container(
+        child: Center(child: Text("Not Supported")),
+      ),
     );
   }
 }

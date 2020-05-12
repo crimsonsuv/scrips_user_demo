@@ -158,7 +158,7 @@ packages:
   date_range_picker:
     dependency: transitive
     description:
-      path: "submodules/scrips_msp1_flutter_shared/third-party/date_range_picker-master"
+      path: "submodules\\scrips_msp1_flutter_shared\\third-party\\date_range_picker-master"
       relative: true
     source: path
     version: "1.0.6"
@@ -612,14 +612,14 @@ packages:
   scrips_core:
     dependency: "direct main"
     description:
-      path: "submodules/scrips_msp1_flutter_shared/scrips_core"
+      path: "submodules\\scrips_msp1_flutter_shared\\scrips_core"
       relative: true
     source: path
     version: "0.20.1"
   scrips_shared_features:
     dependency: "direct main"
     description:
-      path: "submodules/scrips_msp1_flutter_shared/scrips_shared_features"
+      path: "submodules\\scrips_msp1_flutter_shared\\scrips_shared_features"
       relative: true
     source: path
     version: "1.0.0+1"
