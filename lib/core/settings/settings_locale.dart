@@ -23,14 +23,14 @@ class _SettingsLocaleSelectorViewState
 
   @override
   void initState() {
-    bloc.dispatch(GetLocaleEvent());
+    bloc.add(GetLocaleEvent());
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<CoreBloc>(
-      builder: (_) => bloc,
+      create: (_) => bloc,
       child: BlocBuilder<CoreBloc, CoreState>(
         bloc: bloc,
         builder: (context, state) {
@@ -68,7 +68,7 @@ class _SettingsLocaleSelectorViewState
               item.localeCountry == data?.localeCountry,
           onTap: () {
             Navigator.pop(context);
-            bloc.dispatch(SetNewLocalEvent(
+            bloc.add(SetNewLocalEvent(
                 localeCode: item.localeCode, localeCountry: item.localeCode));
           },
         );

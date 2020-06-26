@@ -17,6 +17,7 @@ import 'package:scrips_ua/features/Questionnaire/presentation/widgets/questions_
 import 'package:scrips_ua/features/Questionnaire/presentation/widgets/questions_type_widgets/questions_answer_view/group_answer_widget.dart';
 import 'package:scrips_ua/features/Questionnaire/presentation/widgets/questions_type_widgets/questions_answer_view/open_choice_answer_widget.dart';
 import 'package:scrips_ua/features/Questionnaire/presentation/widgets/questions_type_widgets/questions_answer_view/string_answer_widget.dart';
+import 'package:scrips_ua/generated/l10n.dart';
 
 class QuestionListWidget extends StatefulWidget {
   QuestionListWidget({Key key, this.formData, this.bloc, this.response})
@@ -94,8 +95,7 @@ class _QuestionListWidgetState extends State<QuestionListWidget>
                         system: questionItem
                             ?.answerOptions?.last?.valueCoding?.system));
               }
-              widget.bloc
-                  .dispatch(EnableSaveButtonEvent(response: widget.response));
+              widget.bloc.add(EnableSaveButtonEvent(response: widget.response));
             },
             groupName: questionItem.groups.name,
           );
@@ -111,8 +111,7 @@ class _QuestionListWidgetState extends State<QuestionListWidget>
           answerItem: responseItem,
           onChanged: (answer) {
             responseItem = answer;
-            widget.bloc
-                .dispatch(EnableSaveButtonEvent(response: widget.response));
+            widget.bloc.add(EnableSaveButtonEvent(response: widget.response));
           },
         );
 
@@ -127,7 +126,7 @@ class _QuestionListWidgetState extends State<QuestionListWidget>
               onChanged: (answer) {
                 responseItem = answer;
                 widget.bloc
-                    .dispatch(EnableSaveButtonEvent(response: widget.response));
+                    .add(EnableSaveButtonEvent(response: widget.response));
               },
             );
           },
@@ -143,7 +142,7 @@ class _QuestionListWidgetState extends State<QuestionListWidget>
               onChanged: (answer) {
                 responseItem = answer;
                 widget.bloc
-                    .dispatch(EnableSaveButtonEvent(response: widget.response));
+                    .add(EnableSaveButtonEvent(response: widget.response));
               },
               onSearch: () {
                 openSearchWidget(questionItem, responseItem,
@@ -163,7 +162,7 @@ class _QuestionListWidgetState extends State<QuestionListWidget>
               onChanged: (answer) {
                 responseItem = answer;
                 widget.bloc
-                    .dispatch(EnableSaveButtonEvent(response: widget.response));
+                    .add(EnableSaveButtonEvent(response: widget.response));
               },
               onSearch: () {
                 openSearchWidget(questionItem, responseItem,
@@ -180,8 +179,7 @@ class _QuestionListWidgetState extends State<QuestionListWidget>
           bloc: widget.bloc,
           onChanged: (answer) {
             responseItem = answer;
-            widget.bloc
-                .dispatch(EnableSaveButtonEvent(response: widget.response));
+            widget.bloc.add(EnableSaveButtonEvent(response: widget.response));
           },
         );
         break;
@@ -198,7 +196,7 @@ class _QuestionListWidgetState extends State<QuestionListWidget>
             height: 100,
             child: Center(
               child: Text(
-                "No Questions Added",
+                S.of(context).noQuestionsAdded,
                 style: normalLabelTextStyle(13, defaultFieldHintColor),
               ),
             ),

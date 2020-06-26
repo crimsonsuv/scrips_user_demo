@@ -50,7 +50,7 @@ class _MyAppState extends State<MyApp> with AfterInitMixin<MyApp> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    bloc.dispatch(
+    bloc.add(
       GetLocaleEvent(),
     );
   }
@@ -58,7 +58,7 @@ class _MyAppState extends State<MyApp> with AfterInitMixin<MyApp> {
   @override
   void didInitState() {
     // TODO: implement didInitState
-    bloc.dispatch(
+    bloc.add(
         SetNewLocalEvent(localeCode: localeCode, localeCountry: localeCountry));
   }
 
@@ -73,7 +73,7 @@ class _MyAppState extends State<MyApp> with AfterInitMixin<MyApp> {
 
   Widget createApp(BuildContext context) {
     return BlocProvider<CoreBloc>(
-        builder: (_) => uaSl<CoreBloc>(),
+        create: (_) => uaSl<CoreBloc>(),
         child: BlocBuilder<CoreBloc, CoreState>(
             bloc: bloc,
             builder: (context, state) {

@@ -25,7 +25,7 @@ class _LandingScreenState extends State<LandingScreen> {
 
   @override
   void initState() {
-    bloc.dispatch(GetLoggedUser());
+    bloc.add(GetLoggedUser());
     super.initState();
   }
 
@@ -33,7 +33,6 @@ class _LandingScreenState extends State<LandingScreen> {
   void dispose() {
     // TODO: implement dispose
     super.dispose();
-    bloc.dispose();
   }
 
 //  void _goToHomeIfLoggedIn(User user) {

@@ -15,6 +15,7 @@ import 'package:scrips_ua/features/Questionnaire/data/datamodels/questionnaire_r
     as QuestionnaireResponse;
 import 'package:scrips_ua/features/Questionnaire/presentation/bloc/bloc.dart';
 import 'package:scrips_ua/features/Questionnaire/presentation/widgets/question_list_widget.dart';
+import 'package:scrips_ua/generated/l10n.dart';
 
 class QuestionnaireScreen extends StatefulWidget {
   const QuestionnaireScreen({
@@ -37,7 +38,7 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
   @override
   void initState() {
     super.initState();
-    bloc.dispatch(FetchFormDataEvent(pid: widget.patientId));
+    bloc.add(FetchFormDataEvent(pid: widget.patientId));
   }
 
   @override
@@ -127,7 +128,7 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
               showToastWidget(
                   ToastWidget(
                     width: 250,
-                    message: "Form Response Successfully Sent",
+                    message: S.of(context).formResponseSuccessfullySent,
                     backgroundColor: Colors.black87,
                   ),
                   position: ToastPosition.top,
@@ -255,12 +256,13 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
                             }
                           });
                           if (completionStatus) {
-                            bloc.dispatch(
+                            bloc.add(
                                 SaveFormResponseDataEvent(response: response));
                           } else {
-                            bloc.dispatch(ShowErrorMessageEvent(
-                                message:
-                                    "Please provide response to all the mandatory fields"));
+                            bloc.add(ShowErrorMessageEvent(
+                                message: S
+                                    .of(context)
+                                    .pleaseProvideResponseToAllTheMandatoryFields));
                           }
                         },
                         child: Container(
@@ -268,7 +270,7 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
                           padding: const EdgeInsets.only(right: 16),
                           child: Center(
                               child: Text(
-                            "Submit",
+                            S.of(context).submit,
                             style:
                                 semiBoldLabelTextStyle(16, enabledBtnBGColor),
                           )),

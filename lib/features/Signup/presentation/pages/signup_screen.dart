@@ -16,6 +16,7 @@ import 'package:scrips_ua/di/dependency_injection.dart';
 import 'package:scrips_ua/features/Signup/data/datamodel/patient_list_model.dart';
 import 'package:scrips_ua/features/Signup/presentation/bloc/bloc.dart';
 import 'package:scrips_ua/features/Signup/presentation/bloc/signup_bloc.dart';
+import 'package:scrips_ua/generated/l10n.dart';
 import 'package:validators/validators.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -44,7 +45,7 @@ class _SignupScreenState extends State<SignupScreen>
   @override
   void initState() {
     super.initState();
-    bloc.dispatch(FetchGendersEvent());
+    bloc.add(FetchGendersEvent());
   }
 
   @override
@@ -138,7 +139,7 @@ class _SignupScreenState extends State<SignupScreen>
               return InkWell(
                 onTap: (isNextEnabled)
                     ? () {
-                        bloc.dispatch(FetchPatientEvent(
+                        bloc.add(FetchPatientEvent(
                             firstName: fistName,
                             lastName: lastName,
                             email: email,
@@ -187,8 +188,8 @@ class _SignupScreenState extends State<SignupScreen>
                           ),
                           Text(
                               (isNextEnabled)
-                                  ? "Please wait, sending data.."
-                                  : "Please wait, fetching data..",
+                                  ? S.of(context).pleaseWaitSendingData
+                                  : S.of(context).pleaseWaitFetchingData,
                               style:
                                   semiBoldLabelTextStyle(14, regularTextColor)),
                         ],
@@ -209,7 +210,7 @@ class _SignupScreenState extends State<SignupScreen>
                         vertical: 24,
                       ),
                       Text(
-                        "Enter Your Details",
+                        S.of(context).enterYourDetails,
                         style: boldLabelTextStyle(17, textInputColor),
                         textAlign: TextAlign.center,
                       ),
@@ -217,7 +218,9 @@ class _SignupScreenState extends State<SignupScreen>
                         vertical: 8,
                       ),
                       Text(
-                        "This info lets providers give more helpful, \npersonalized experience",
+                        S
+                            .of(context)
+                            .thisInfoLetsProvidersGiveMoreHelpfulNpersonalizedExperience,
                         style: normalLabelTextStyle(15, regularTextColor),
                         textAlign: TextAlign.center,
                       ),
@@ -248,10 +251,11 @@ class _SignupScreenState extends State<SignupScreen>
                                   fieldType: FieldType.TextField,
                                   labelTextStyle:
                                       defaultFieldLabelStyle(null, null),
-                                  labelValue: "FIRST NAME".toUpperCase(),
+                                  labelValue:
+                                      S.of(context).firstName.toUpperCase(),
                                   onChanged: (value, FieldAndLabelState state) {
                                     fistName = value;
-                                    bloc.dispatch(EnableNextEvent(
+                                    bloc.add(EnableNextEvent(
                                         firstName: fistName,
                                         lastName: lastName,
                                         dob: dob,
@@ -260,7 +264,7 @@ class _SignupScreenState extends State<SignupScreen>
                                         contact: contact));
                                   },
                                   validationMessage: "",
-                                  placeholder: "Enter first name",
+                                  placeholder: S.of(context).enterFirstName,
                                   axis: Axis.vertical,
                                   enabled: true,
                                 ),
@@ -279,9 +283,10 @@ class _SignupScreenState extends State<SignupScreen>
                                   fieldType: FieldType.TextField,
                                   labelTextStyle:
                                       defaultFieldLabelStyle(null, null),
-                                  labelValue: "MIDDLE NAME".toUpperCase(),
+                                  labelValue:
+                                      S.of(context).middleName.toUpperCase(),
                                   onChanged: (value, FieldAndLabelState state) {
-                                    bloc.dispatch(EnableNextEvent(
+                                    bloc.add(EnableNextEvent(
                                         firstName: fistName,
                                         lastName: lastName,
                                         dob: dob,
@@ -290,7 +295,8 @@ class _SignupScreenState extends State<SignupScreen>
                                         contact: contact));
                                   },
                                   validationMessage: "",
-                                  placeholder: "Enter middle name (Optional)",
+                                  placeholder:
+                                      S.of(context).enterMiddleNameOptional,
                                   axis: Axis.vertical,
                                   enabled: true,
                                 ),
@@ -309,10 +315,11 @@ class _SignupScreenState extends State<SignupScreen>
                                   fieldType: FieldType.TextField,
                                   labelTextStyle:
                                       defaultFieldLabelStyle(null, null),
-                                  labelValue: "LAST NAME".toUpperCase(),
+                                  labelValue:
+                                      S.of(context).lastName.toUpperCase(),
                                   onChanged: (value, FieldAndLabelState state) {
                                     lastName = value;
-                                    bloc.dispatch(EnableNextEvent(
+                                    bloc.add(EnableNextEvent(
                                         firstName: fistName,
                                         lastName: lastName,
                                         dob: dob,
@@ -321,7 +328,7 @@ class _SignupScreenState extends State<SignupScreen>
                                         contact: contact));
                                   },
                                   validationMessage: "",
-                                  placeholder: "Enter last name",
+                                  placeholder: S.of(context).enterLastName,
                                   axis: Axis.vertical,
                                   enabled: true,
                                 ),
@@ -351,11 +358,14 @@ class _SignupScreenState extends State<SignupScreen>
                                       lastDate: DateTime.now(),
                                       labelTextStyle:
                                           defaultFieldLabelStyle(null, null),
-                                      labelValue: "DATE OF BIRTH",
+                                      labelValue: S
+                                          .of(context)
+                                          .dateOfBirth
+                                          .toUpperCase(),
                                       onChanged:
                                           (value, FieldAndLabelState state) {
                                         dob = value;
-                                        bloc.dispatch(EnableNextEvent(
+                                        bloc.add(EnableNextEvent(
                                             firstName: fistName,
                                             lastName: lastName,
                                             dob: dob,
@@ -364,7 +374,8 @@ class _SignupScreenState extends State<SignupScreen>
                                             contact: contact));
                                       },
                                       validationMessage: "",
-                                      placeholder: "Select date of birth",
+                                      placeholder:
+                                          S.of(context).selectDateOfBirth,
                                       axis: Axis.vertical,
                                       enabled: true,
                                     );
@@ -389,8 +400,8 @@ class _SignupScreenState extends State<SignupScreen>
                                       tagsItems: ((genderList?.length ?? 0) > 0)
                                           ? genderList
                                               .map((item) => ValueDisplayPair(
-                                                  item?.id ?? '',
-                                                  item?.gender
+                                                  value: item?.id ?? '',
+                                                  label: item?.gender
                                                           ?.toLowerCase()
                                                           ?.capitalize() ??
                                                       ''))
@@ -400,11 +411,12 @@ class _SignupScreenState extends State<SignupScreen>
                                       fieldType: FieldType.SingleTagPicker,
                                       labelTextStyle:
                                           defaultFieldLabelStyle(null, null),
-                                      labelValue: "GENDER".toUpperCase(),
+                                      labelValue:
+                                          S.of(context).gender.toUpperCase(),
                                       onChanged:
                                           (value, FieldAndLabelState state) {
                                         gender = value;
-                                        bloc.dispatch(EnableNextEvent(
+                                        bloc.add(EnableNextEvent(
                                             firstName: fistName,
                                             lastName: lastName,
                                             dob: dob,
@@ -433,7 +445,8 @@ class _SignupScreenState extends State<SignupScreen>
                                   fieldValue: contact,
                                   labelTextStyle:
                                       defaultFieldLabelStyle(null, null),
-                                  labelValue: "CONTACT NUMBER".toUpperCase(),
+                                  labelValue:
+                                      S.of(context).contactNumber.toUpperCase(),
                                   maxLength: 20,
                                   onChanged: (value, FieldAndLabelState state) {
                                     if (state.currentValidationMessage.length >
@@ -443,7 +456,7 @@ class _SignupScreenState extends State<SignupScreen>
                                     } else {
                                       contact = value;
                                     }
-                                    bloc.dispatch(EnableNextEvent(
+                                    bloc.add(EnableNextEvent(
                                         firstName: fistName,
                                         lastName: lastName,
                                         dob: dob,
@@ -452,7 +465,7 @@ class _SignupScreenState extends State<SignupScreen>
                                         contact: contact));
                                   },
                                   validationMessage: "",
-                                  placeholder: "e.g. +971 23 345 6789",
+                                  placeholder: S.of(context).eg971233456789,
                                   axis: Axis.vertical,
                                   enabled: true,
                                 ),
@@ -468,9 +481,10 @@ class _SignupScreenState extends State<SignupScreen>
                                   fieldType: FieldType.TextField,
                                   labelTextStyle:
                                       defaultFieldLabelStyle(null, null),
-                                  labelValue: "EMAIL ADDRESS".toUpperCase(),
+                                  labelValue:
+                                      S.of(context).emailAddress.toUpperCase(),
                                   fieldValue: email,
-                                  placeholder: "Enter email address",
+                                  placeholder: S.of(context).enterEmailAddress,
                                   maxLength: 100,
                                   axis: Axis.vertical,
                                   enabled: true,
@@ -478,13 +492,14 @@ class _SignupScreenState extends State<SignupScreen>
                                     if (!isEmail(value) &&
                                         value.toString().length > 0) {
                                       email = "";
-                                      state.setValidationMessage(
-                                          "Please enter valid email address");
+                                      state.setValidationMessage(S
+                                          .of(context)
+                                          .pleaseEnterValidEmailAddress);
                                     } else {
                                       email = value;
                                       state.setValidationMessage('');
                                     }
-                                    bloc.dispatch(EnableNextEvent(
+                                    bloc.add(EnableNextEvent(
                                         firstName: fistName,
                                         lastName: lastName,
                                         dob: dob,
